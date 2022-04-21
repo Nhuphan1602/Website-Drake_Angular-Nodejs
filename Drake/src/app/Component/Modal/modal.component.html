@@ -1,0 +1,100 @@
+<ng-container *ngIf="Type === 'success'; then success; else others"></ng-container>
+<ng-template #success>
+
+    <div #Modal class="modal fade" id="myModal-{{id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" role="document">
+                <div class="modal-header">
+                    <button #ModalCloseButton class=" btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-icon success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="modal-text">
+                        <p>{{Content}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</ng-template>
+<ng-template #others>
+    <ng-container *ngIf="Type === 'danger'; then danger; else others2"></ng-container>
+</ng-template>
+<ng-template #danger>
+
+    <div #Modal class="modal fade" id="myModal-{{id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" role="document">
+                <div class="modal-header">
+                    <button #ModalCloseButton class=" btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-icon danger-icon">
+                        <i class="far fa-times-circle"></i>
+                    </div>
+                    <div class="modal-text">
+                        <p>{{Content}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</ng-template>
+<ng-template #others2>
+    <ng-container *ngIf="Type === 'warning'; then warning; else yesno"></ng-container>
+</ng-template>
+<ng-template #warning>
+
+    <div #Modal class="modal fade" id="myModal-{{id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" role="document">
+                <div class="modal-header">
+                    <button #ModalCloseButton class=" btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-icon warning-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="modal-text">
+                        <p>{{Content}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</ng-template>
+<ng-template #yesno>
+
+    <div #Modal class="modal fade" id="myModal-{{id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" role="document">
+                <div class="modal-header">
+                    <button #ModalCloseButton class=" btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-text">
+                        <p>{{Content}}</p>
+                    </div>
+                    <div class="modal-button-group">
+                        <button class="modal-yes-button" (click)="ModalYesButtonClick()">Có</button>
+                        <button class="modal-no-button" (click)="ModalNoButtonClick()">Không</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</ng-template>
+<button #ModalOpenButton class="btn btn-success" data-bs-toggle="modal" [attr.data-bs-target]="'#myModal-'+id" hidden>
+    Open Modal</button>

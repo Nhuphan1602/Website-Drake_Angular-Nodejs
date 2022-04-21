@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.select {
+    border: 1px solid #ced4da;
+    padding: 0.46875rem 0.75rem;
+    height: calc(2.25rem + 2px);
+    background-color: #fff;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+}
+
+.select {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    height: 38px;
+}
+
+.btn:focus {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+.form-control:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: #1b1b1b !important;
+}
+.cdk-overlay-container {
+    z-index: 2000 !important;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mt-50{
+    margin-top: 50px;
+}

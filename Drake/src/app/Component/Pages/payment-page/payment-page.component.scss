@@ -1,0 +1,151 @@
+#payment-content .card .card-content {
+  font-size: 1rem;
+}
+#payment-content .card .card-content + .card-content {
+  margin-top: 15px;
+}
+#payment-content .card .card-content input[type="radio"] {
+  cursor: pointer;
+  margin-right: 10px;
+}
+#payment-content .card .card-body .mytable table {
+  margin-bottom: 0;
+}
+#payment-content .card .card-body #magiamgia-table {
+  max-height: 143px;
+  overflow: scroll;
+}
+#payment-content .card .card-body #magiamgia-table table tr .column-1 {
+  width: 30%;
+}
+#payment-content .card .card-body #magiamgia-table table tr .column-2 {
+  width: 70%;
+}
+
+#payment-content .card .card-body #giohang-table table tr .column-1 {
+  width: 10%;
+}
+#payment-content .card .card-body #giohang-table table tr .column-2 {
+  width: 50%;
+}
+#payment-content .card .card-body #giohang-table table tr .column-3 {
+  width: 8%;
+}
+#payment-content .card .card-body #giohang-table table tr .column-4 {
+  width: 13%;
+}
+#payment-content .card .card-body #giohang-table table tr .column-5 {
+  width: 13%;
+}
+
+#payment-content .card .card-body .magiamgiam-container {
+  width: 30%;
+}
+#payment-content .card .card-body .magiamgiam-container button {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+#payment-content
+  .card
+  .card-body
+  .magiamgiam-container
+  #magiamgiam-selected-card {
+  width: 50%;
+  border-radius: 0.25rem;
+  border: 2px solid #22ee5b;
+  transition: all 0.2s linear;
+}
+#payment-content
+  .card
+  .card-body
+  .magiamgiam-container
+  #magiamgiam-selected-card
+  .text-area {
+  display: flex;
+  align-items: center;
+}
+#payment-content
+  .card
+  .card-body
+  .magiamgiam-container
+  #magiamgiam-selected-card
+  .icon-area {
+  margin-left: 0.75rem;
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  color: #22ee5b;
+  transition: all 0.2s linear;
+}
+
+//Phần chỉnh hover cho nút xóa mã giảm giá
+#payment-content
+  .card
+  .card-body
+  .magiamgiam-container
+  #magiamgiam-selected-card
+  button {
+  border-color: #22ee5b;
+  background-color: #22ee5b;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  transition: all 0.2s linear;
+}
+#payment-content
+  .card
+  .card-body
+  .magiamgiam-container
+  #magiamgiam-selected-card:hover {
+  border-color: #db2841;
+}
+#payment-content
+  .card
+  .card-body
+  .magiamgiam-container
+  #magiamgiam-selected-card:hover
+  > button {
+  border-color: #db2841;
+  background-color: #db2841;
+}
+#payment-content
+  .card
+  .card-body
+  .magiamgiam-container
+  #magiamgiam-selected-card:hover
+  > .icon-area {
+  color: #db2841;
+}
+
+//Phần thanh toán
+a {
+  color: #337ab7 !important;
+}
+
+.panel {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  padding: 12px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgb(0 0 0 / 5%);
+  box-shadow: 0 1px 1px rgb(0 0 0 / 5%);
+  color: #777777 !important;
+}
+.panel #confirm_form #confirm_agree_input input[type="checkbox"] {
+  margin: 0 0.5rem;
+}
+.panel a {
+  color: #337ab7 !important;
+}
+
+.panel button {
+  width: 100%;
+  background: #fe0001;
+  border-color: #fe0001;
+  color: white;
+}
+.panel button:hover {
+  background: #cb0000;
+  border-color: #cb0000;
+}

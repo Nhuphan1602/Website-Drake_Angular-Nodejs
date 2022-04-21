@@ -1,0 +1,91 @@
+<section class="content" style="margin-top: 70px">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Danh sách các sản phẩm - size</h3>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <div class="col-md-5 col-sm-6 p-0">
+              <div class="form-group">
+                <div class="input-group">
+                  <input #currentItem (keyup.enter)="onEnter(currentItem.value)" [(ngModel)]="timkiem" name="timkiem"
+                    type="search" class="form-control" placeholder="Tìm kiếm theo mã sản phẩm">
+                  <div class="input-group-append">
+                    <button (click)="onEnter(currentItem.value)" type="submit" class="btn btn-default">
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <table id="ds-spsize" class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>Mã sản phẩm</th>
+                  <th>Mã size</th>
+                  <th>Tên size</th>
+                  <th>Số lượng</th>
+                  <th class="text-center">Sửa</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let sps of DanhSach_SPSize">
+                  <td>{{sps.MaSP}}</td>
+                  <td>{{sps.MaSize}}</td>
+                  <td>{{sps.Giatri}}</td>
+                  <td>{{sps.SoLuong}}</td>
+                  <td class="text-center">
+                    <div class="btn-group" style="margin-top: 5px;">
+                      <button type="button" (click)="getSPSize(sps)" data-toggle="modal" data-target="#sua-spsize-modal"
+                        class="btn btn-info"><i class="fas fa-edit"></i></button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+
+</section>
+<!-- /.content -->
+
+<div id="sua-spsize-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="spsize-ModalLabel">Chỉnh sửa số lượng sản phẩm có size</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row">
+            <div class="col-8 offset-2">
+              <div class="form-group">
+                <label class="col-form-label">Số lượng:</label>
+                <input type="number" min="0" [(ngModel)]="soluong" name="soluong" class="form-control">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+        <button (click)="saveSPSize()" type="button" class="btn btn-primary">Lưu</button>
+      </div>
+    </div>
+  </div>
+</div>

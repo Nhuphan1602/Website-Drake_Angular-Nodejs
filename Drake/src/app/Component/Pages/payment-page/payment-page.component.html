@@ -1,0 +1,289 @@
+<div style="width: 65%;margin: 0 auto 2.5rem auto; ">
+    <navigator></navigator>
+    <div id="payment-content" class="row justify-content-end">
+        <!--Thẻ thông tin-->
+        <div class="col-sm-4 g-0 mb-3">
+            <div class="card">
+                <div class="card-header">
+                    <i class="far fa-address-card"></i>
+                    <span class="weight-500"> Thông tin</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-content">
+                        <span class="weight-500">Họ tên</span>
+                        <span class="float-right">{{User.Ho}} {{User.Ten}}</span>
+                    </div>
+                    <div class="card-content">
+                        <span class="weight-500">Số điện thoại</span>
+                        <span class="float-right">{{User.Sdt}}</span>
+                    </div>
+                    <div class="card-content">
+                        <span class="weight-500">Email</span>
+                        <span class="float-right">{{User.Email}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--Thẻ địa chỉ-->
+        <div class="col-sm-4 mb-3">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <span class="weight-500"> Địa chỉ</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-content">
+                        <span class="weight-500">Địa chỉ: </span>
+                        <i>{{User.DiaChiChinh}}, {{User.QuanHuyen}}, {{User.TinhThanh}}.</i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Thẻ mã giảm giá-->
+        <div class="col-sm-4 g-0 mb-3">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-money-check-alt"></i>
+                    <span class="weight-500"> Mã giảm giá</span>
+                </div>
+                <div class="card-body">
+                    <div class="mytable" id="magiamgia-table">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <td class="column-1 text-center">Mã giảm giá</td>
+                                    <td class="column-2 text-right">Giá trị</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let MaGiamGiaItem of MaGiamGiaItems; let i = index">
+                                    <td class="column-1 text-center">{{MaGiamGiaItem.Ten}}</td>
+                                    <td class="column-2 text-right">
+                                        {{MaGiamGiaItem.DieuKien === 0 ? 'Giảm '+MaGiamGiaItem.GiaTri*100+'% hóa đơn' :
+                                        'Giảm '+MaGiamGiaItem.GiaTri*100+'% cho hóa đơn trên '
+                                        +(MaGiamGiaItem.DieuKien|numberWithDots)+'đ'}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!--Thẻ phương thức giao hàng-->
+        <div class="col-sm-4 mt-3 mb-3">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-truck"></i>
+                    <span class="weight-500"> Phương thức giao hàng</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-content" *ngFor="let PtvcItem of PtvcItems; let i = index">
+                        <ng-container *ngIf="i === 0; then PtvcItemIsIndex0; else PtvcIsNotIndex0"></ng-container>
+
+                        <ng-template #PtvcItemIsIndex0>
+                            <input type="radio" id="{{PtvcItem.MaPTVC}}" name='ptvc' checked
+                                (change)="PtvcRadioOnChange(PtvcItem.Phi)">
+                            <span class="weight-500">{{PtvcItem.Ten}}</span>
+                            <span class="float-right">{{PtvcItem.Phi | numberWithDots}}đ</span>
+                        </ng-template>
+
+                        <ng-template #PtvcIsNotIndex0>
+                            <input type="radio" id="{{PtvcItem.MaPTVC}}" name='ptvc'
+                                (change)="PtvcRadioOnChange(PtvcItem.Phi)">
+                            <span class="weight-500">{{PtvcItem.Ten}}</span>
+                            <span class="float-right">{{PtvcItem.Phi | numberWithDots}}đ</span>
+                        </ng-template>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Thẻ phương thức thanh toán-->
+        <div class="col-sm-4 g-0 mt-3   mb-3">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-credit-card"></i>
+                    <span class="weight-500"> Phương thức thanh toán</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-content" *ngFor="let PtttItem of PtttItems; let i = index">
+                        <ng-container *ngIf="i === 0; then PtttItemIsIndex0; else PtttIsNotIndex0"></ng-container>
+
+                        <ng-template #PtttItemIsIndex0>
+                            <input type="radio" id="{{PtttItem.MaPTTT}}" name='pttt' checked
+                                (change)="PtttRadioOnChange(PtttItem.Phi)">
+                            <span class="weight-500">{{PtttItem.Ten}}</span>
+                        </ng-template>
+
+                        <ng-template #PtttIsNotIndex0>
+                            <input type="radio" id="{{PtttItem.MaPTTT}}" name='pttt'
+                                (change)="PtttRadioOnChange(PtttItem.Phi)">
+                            <span class="weight-500">{{PtttItem.Ten}}</span>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-sm-12 g-0 mt-3">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span class="weight-500"> Giỏ hàng</span>
+                </div>
+                <div class="card-body">
+                    <div class="mytable " id="giohang-table">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <td class="column-1 text-center">Hình ảnh</td>
+                                    <td class="column-2 text-left">Tên sản phẩm</td>
+                                    <td class="column-3 text-center">Số lượng</td>
+                                    <td class="column-4 text-right">Đơn giá</td>
+                                    <td class="column-5 text-right">Thành tiền</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let ShopCartItem of ShopCartItems; let i = index">
+                                    <td class="column-1 text-center">
+                                        <img class="img-fluid" src="{{ShopCartItem.Hinh}}">
+                                    </td>
+                                    <td class="column-2 text-left">
+                                        {{ShopCartItem.Ten}}
+                                        <br>
+                                        <small>SIZE CHART: {{ShopCartItem.GiaTriSize}}</small>
+                                    </td>
+                                    <td class="column-3 text-center">{{ShopCartItem.SoLuong | numberWithDots}}</td>
+                                    <td class="column-4 text-right">{{ShopCartItem.Gia*(1-ShopCartItem.Km) |
+                                        numberWithDots}}đ</td>
+                                    <td class="column-5 text-right">
+                                        {{ShopCartItem.Gia*(1-ShopCartItem.Km)*ShopCartItem.SoLuong | numberWithDots}}đ
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="d-flex justify-content-between mt-4">
+                        <div class="magiamgiam-container">
+                            <div class="input-group btn-block">
+                                <input type="text" id="magiamgiam-input" class="form-control"
+                                    placeholder="Áp dụng mã giảm giá" [(ngModel)]="TenMgg_NgModel">
+                                <button class="btn btn-primary" (click)="ThemMaGiamGia()">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </div>
+
+                            <alert [id]="'payment-page-alert1'" [Type]="'danger'"
+                                [Content]="'Mã giảm giá không hợp lệ.'"></alert>
+
+                            <alert [id]="'payment-page-alert2'" [Type]="'warning'"
+                                [Content]="'Bạn chỉ được chọn 1 mã giảm giá.'"></alert>
+
+                            <alert [id]="'payment-page-alert3'" [Type]="'success'"
+                                [Content]="'Bạn đã áp dụng mã giảm giá thành công.'"></alert>
+
+                            <div class="d-flex justify-content-between mt-2" id="magiamgiam-selected-card"
+                                *ngIf="MggSelected">
+                                <div class="icon-area"><i class="fas fa-check"></i></div>
+                                <div class="text-area">BF112721A</div>
+                                <button class="btn btn-primary" (click)="XoaMaGiamGia()">
+                                    <i class="fas fa-backspace"></i>
+                                </button>
+                            </div>
+                        </div>
+
+
+
+                        <div class="moneycalc-container" style="width: 24%;">
+                            <div class="card-content">
+                                <span class="weight-500">Thành tiền</span>
+                                <span id="payment-page-thanhtien" class="float-right">{{ThanhTien |
+                                    numberWithDots}}đ</span>
+                            </div>
+                            <div class="card-content">
+                                <span class="weight-500">Phí giao dịch</span>
+                                <span class="float-right">{{PhiGiaoDich | numberWithDots}}đ</span>
+                            </div>
+                            <div class="card-content">
+                                <span class="weight-500">Phí ship</span>
+                                <span class="float-right">{{PhiShip | numberWithDots}}đ</span>
+                            </div>
+                            <div class="card-content">
+                                <span class="weight-500">Voucher</span>
+                                <span class="float-right">-{{Voucher | numberWithDots}}đ</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                <div class="card-footer">
+                    <div class="totalmoney-container" style="width: 24%;margin: 0 0 0 auto;">
+                        <div class="card-content">
+                            <span class="weight-500">Tổng cộng</span>
+                            <span class="float-right">{{TongCong | numberWithDots}}đ</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="panel">
+                <form id="confirm_form" class="form-horizontal">
+                    <div id="confirm_comment_input" class="text-input form-group sort-item">
+                        <div class="col-xs-12">
+                            <label class="control-label" for="confirm_comment">
+                                <span class="weight-500"> Thêm ghi chú cho đơn hàng:</span>
+                            </label>
+                        </div>
+                        <div class="col-xs-12 pt-2 pb-4">
+                            <textarea id="confirm_comment" name="confirm_comment"
+                                class="form-control validate not-required textarea comment" autocomplete="on"
+                                placeholder="Thêm ghi chú cho đơn hàng" [(ngModel)]="GhiChu_NgModel"></textarea>
+                        </div>
+                    </div>
+                    <div id="confirm_agree_input" class="checkbox-input form-group sort-item required" data-sort="1">
+                        <div class="col-xs-12">
+                            <input type="checkbox" autocomplete="on" class="validate required" name="iagreed"
+                                [(ngModel)]='iAgreed'>
+                            <span class="weight-500">Tôi đã Đọc &amp; Đồng ý với
+                                <a class="agree">
+                                    <b>Quy định và hình thức thanh toán</b>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+                <ng-container *ngIf="iAgreed;then TtBtnOn; else TtBtnOff"></ng-container>
+                <ng-template #TtBtnOn>
+                    <button id="confirm_order" class="btn btn-lg btn-block" (click)="ThanhToan()">
+                        <span class="weight-500">Xác nhận đơn hàng</span>
+                    </button>
+                </ng-template>
+                <ng-template #TtBtnOff>
+                    <button id="confirm_order" class="btn btn-lg btn-block" disabled>
+                        <span class="weight-500">Xác nhận đơn hàng</span>
+                    </button>
+                </ng-template>
+
+                <modal [id]="'payment-page-modal-1'" [Type]="'success'" [Content]="'Bạn đã thanh toán thành công.'"
+                    (ModalClosed)="Modal1Closed()"></modal>
+
+                <modal [id]="'payment-page-modal-2'" [Type]="'danger'" [Content]="'Bạn đã thanh toán thất bại.'">
+                </modal>
+
+            </div>
+        </div>
+    </div>
+</div>

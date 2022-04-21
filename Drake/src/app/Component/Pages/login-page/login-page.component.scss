@@ -1,0 +1,69 @@
+.box1,
+.box2 {
+  width: 49%;
+}
+.well {
+  padding: 1.563rem;
+  border: 1px solid #dbdbdb;
+  height: 100%;
+}
+
+.box1 .well h2,
+.box2 .well h2 {
+  margin: 0 0 1.563rem 0;
+  font-size: 1.25rem;
+  color: #000;
+}
+
+.box1 .well .btn,
+.box2 .well .btn {
+  padding: 0.625rem 1.25rem;
+  background-color: #f8c052;
+  border-style: none !important;
+  border-radius: 0;
+  cursor: pointer;
+  color: #000;
+  font-size: 1rem;
+}
+
+.box1 .well .btn:hover,
+.box2 .well .btn:hover {
+  color: white;
+  background: #555555;
+}
+.box1 .well p {
+  color: #666666;
+  text-align: justify;
+  font-size: 0.9rem;
+}
+
+.box2 .well .form-group {
+  margin-bottom: 0.938rem;
+}
+
+.box2 .well label {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.313rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.box2 .well .form-group .form-control {
+  background-color: #fff;
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  transition: all 0.3s ease-in;
+}
+
+.box2 .well .form-group .form-control:focus,
+.box2 .well .form-group .form-control:hover {
+  border: 1px solid #b9b9b9 !important;
+  background-color: #e9e9e9 !important;
+}
+
+.box2 .well .form-group .forgot-password {
+  color: #dc9a17;
+  font-size: 0.8rem;
+}

@@ -1,0 +1,163 @@
+/* ============ menu component // ============ */
+// <Chỉnh chung>
+// Menu chính
+#main_nav .nav-link {
+  padding: 0.625rem 1rem;
+}
+#main_nav .nav-link a {
+  color: #ffffff;
+  font-weight: bold !important;
+  font-size: 0.938rem;
+}
+
+// Menu phụ
+#main_nav .megamenu .nav-link {
+  padding: 1rem 0 0 0 !important;
+}
+#main_nav .megamenu .nav-link::before {
+  display: none !important;
+}
+#main_nav .megamenu a.dropdown-item {
+  background-color: white !important;
+}
+#main_nav .megamenu .nav-link img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+#main_nav .megamenu .nav-link a {
+  text-align: center;
+}
+.bg-dark {
+  background-color: #000000 !important;
+}
+// Nút search
+
+.form-inputs {
+  position: relative;
+}
+
+.form-inputs .form-control {
+  height: 35px;
+  width: 120px;
+  border-radius: 2px;
+  font-size: 12px;
+  border: 1px solid #777;
+  background-color: #000000;
+  color: #fff;
+  transition: all 0.2s ease-in !important;
+}
+
+.form-inputs .form-control::placeholder {
+  color: #fff;
+}
+#search {
+  color: #fff;
+}
+
+.form-inputs .form-control:focus,
+.form-inputs .form-control:hover {
+  box-shadow: none;
+  background-color: #fff;
+  color: #000;
+}
+
+.form-inputs i {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: #fff;
+}
+
+// </Chỉnh chung>
+/* ============ desktop view ============ */
+@media all and (min-width: 992px) {
+  .navbar .has-megamenu {
+    position: static !important;
+  }
+  #main_nav .dropdown .nav-link {
+    position: relative;
+  }
+  #main_nav .dropdown .nav-link::before {
+    display: block;
+    position: absolute;
+    content: "";
+    background-image: linear-gradient(to right, red, yellow);
+    height: 0.2rem;
+    width: 100%;
+    bottom: 0;
+    left: 50%;
+    transform: scaleX(0) translateX(-50%);
+    transform-origin: 0 0;
+    transition: transform 0.25s ease-in;
+  }
+  #main_nav .dropdown .nav-link:hover::before {
+    transform: scaleX(1) translateX(-50%);
+  }
+  #main_nav .dropdown .megamenu {
+    display: block;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0;
+    width: 65%;
+    margin-top: 0;
+    padding: 2rem 0 1rem 0;
+    box-shadow: 0px 2px 8px 0px rgba(50, 50, 50, 0.2);
+    border-radius: 0;
+    left: 50%;
+    transform: scaleY(0) translateX(-50%);
+    transform-origin: top;
+    -webkit-transition: transform 0.25s ease-in, pointer-events 0.25s ease-in,
+      opacity 0.25s ease-in;
+    -moz-transition: transform 0.25s ease-in, pointer-events 0.25s ease-in,
+      opacity 0.25s ease-in;
+    -ms-transition: transform 0.25s ease-in, pointer-events 0.25s ease-in,
+      opacity 0.25s ease-in;
+    -o-transition: transform 0.25s ease-in, pointer-events 0.25s ease-in,
+      opacity 0.25s ease-in;
+    transition: transform 0.25s ease-in, pointer-events 0.25s ease-in,
+      opacity 0.25s ease-in;
+  }
+  #main_nav .dropdown:hover .megamenu {
+    pointer-events: auto;
+    opacity: 1;
+    transform: scaleY(1) translateX(-50%);
+  }
+  .navbar-toggler-icon {
+    margin-top: 5px;
+  }
+  #main_nav {
+    display: flex;
+    justify-content: center;
+  }
+}
+/* ============ desktop view .end// ============ */
+
+/* ============ mobile view ============ */
+@media (max-width: 991px) {
+  .navbar .has-megamenu {
+    position: static !important;
+  }
+  .navbar .megamenu {
+    left: 10%;
+    width: 90%;
+    margin-top: 0;
+  }
+
+  .main_nav {
+    display: block;
+    justify-content: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    width: 280px; /*example + never use min-width with this solution */
+    height: 100%;
+    background-color: white;
+    color: #000000 !important;
+  }
+}
+
+/* ============ mobile view .end// ============ */
+
+/* ============ end menu component // ============ */

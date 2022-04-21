@@ -1,0 +1,98 @@
+<div style="width: 65%;margin: 0 auto 2.5rem auto">
+    <navigator></navigator>
+    <h1 class='title'>Giỏ hàng</h1>
+    <div class="mytable">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td class="column-1"><input type="checkbox" [(ngModel)]="isMasterCheck"
+                            (change)="CheckUncheckAll()"></td>
+                    <td class="column-2 text-center">Hình ảnh</td>
+                    <td class="column-3 text-left">Tên sản phẩm</td>
+                    <td class="column-4 text-left">Dòng sản phẩm</td>
+                    <td class="column-5 text-left">Số lượng</td>
+                    <td class="column-6 text-right">Đơn Giá</td>
+                    <td class="column-7 text-right">Thành tiền</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr #ShopCartItemsIterator *ngFor="let ShopCartItem of ShopCartItems;let i = index">
+                    <!-- Cột 1 - Checkbox-->
+                    <td class="column-1"><input type="checkbox" name="product-checkbox"
+                            [(ngModel)]="ShopCartItem.isChecked" (change)="IsAllChecked()"></td>
+                    <!-- Cột 2 - Hình-->
+                    <td class="column-2 text-center ">
+                        <img src="{{ShopCartItem.Hinh}}" class="img-fluid"
+                            (click)="FromHomeToProductDetailPage(ShopCartItem.MaSP)">
+                    </td>
+                    <!-- Cột 3 - Tên-->
+                    <td class="column-3 text-left">
+                        <span class="mytable-link"
+                            (click)="FromHomeToProductDetailPage(ShopCartItem.MaSP)">{{ShopCartItem.Ten}}</span>
+                        <br>
+                        <small>SIZE CHART: {{ShopCartItem.GiaTriSize}}</small>
+                    </td>
+                    <!-- Cột 4 - Dòng sản phẩm-->
+                    <td class="column-4 text-left">{{ShopCartItem.DongSanPham}}</td>
+                    <!-- Cột 5 - Chức năng-->
+                    <td class="column-5 text-left">
+                        <div class="input-group btn-block">
+                            <input type="number" class="form-control" min="1" max="999"
+                                [(ngModel)]="ShopCartItem.SoLuong">
+                            <button class="btn btn-primary"
+                                (click)="UpdateShopcart(i,ShopCartItem.MaSP,ShopCartItem.MaSize,ShopCartItem.SoLuong)">
+                                <i class="fas fa-pen"></i>
+                            </button>
+                            <button class="btn btn-danger" (click)="AskForDeleteFromShopcart(ShopCartItem.MaSP)">
+                                <i class="fa fa-times-circle"></i>
+                            </button>
+
+                        </div>
+                    </td>
+                    <!-- Cột 6 - Đơn giá-->
+                    <td class="column-6 text-right">{{ShopCartItem.Gia*(1-ShopCartItem.Km) | numberWithDots}}đ</td>
+                    <!-- Cột 6 - Thành tiền-->
+                    <td class="column-7 text-right">
+                        {{ShopCartItem.Gia*(1-ShopCartItem.Km)*ShopCartItem.SoLuong | numberWithDots}}đ
+                    </td>
+                    <modal [id]="'shopcart-page-modal'+ShopCartItem.MaSP" [Type]="'yesno'"
+                        [Content]="'Bạn có muốn xóa sản phẩm khỏi giỏ hàng ?'"
+                        (ModalClosed)="DeleteFromShopcartModalClosed($event,i,ShopCartItem.MaSP,ShopCartItem.MaSize)">
+                    </modal>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="total-container row g-0">
+        <div class="col-sm-4 offset-sm-8">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="text-right"><strong>Tổng cộng :</strong></td>
+                        <td id="shopcart-page-tongcong" class="text-right">{{TongCong | numberWithDots}}đ</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <div class="button-container">
+        <button class="btn btn-default" (click)="ToProfilePage()">Trở về</button>
+        <button class="btn btn-primary" (click)="ToPaymentPage()">Thanh toán</button>
+    </div>
+
+    <modal [id]="'shopcart-page-modal1'" [Type]="'warning'" [Content]="'Bạn chưa chọn sản phẩm.'">
+    </modal>
+
+    <modal [id]="'shopcart-page-modal2'" [Type]="'success'" [Content]="'Lưu sản phẩm thành công.'">
+    </modal>
+
+    <modal [id]="'shopcart-page-modal3'" [Type]="'danger'" [Content]="'Lưu sản phẩm thất bại.'">
+    </modal>
+
+    <modal [id]="'shopcart-page-modal4'" [Type]="'danger'" [Content]="'Xóa sản phẩm thất bại.'">
+    </modal>
+
+</div>

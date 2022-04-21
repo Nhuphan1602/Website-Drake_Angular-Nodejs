@@ -1,0 +1,7 @@
+<product-cards [ProductCards]="ProductCards" [Pagination]="true" [ClassOption]="0"
+  (ImgClick)="FromSearchPageToProductDetailPage($event)" (TagClick)="FromSearchPageToProductDetailPage($event)"
+  (HeartIconClick)="InsertIntoWishlist($event)" (ShopCartIconClick)="FromSearchPageToProductDetailPage($event)"
+  (TenClick)="FromSearchPageToProductDetailPage($event)">
+</product-cards>
+<modal [id]="'search-page-modal1'" [Type]="'success'" [Content]="'Yêu thích sản phẩm thành công.'"></modal>
+<modal [id]="'search-page-modal2'" [Type]="'danger'" [Content]="'Bạn đã yêu thích sản phẩm này rồi.'"></modal>

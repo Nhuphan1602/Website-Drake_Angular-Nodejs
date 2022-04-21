@@ -1,0 +1,235 @@
+<mat-tab-group animationDuration="0ms" class="mt-5 mb-5">
+  <mat-tab label="Thông số kỹ thuật">
+    <div class="d-flex product-attributes">
+      <div class="attribute-group">
+        <h3 class="text-center">Thông tin sản phẩm</h3>
+        <ul class="attribute-list">
+          <li>
+            <label class="label">Nhãn hiệu <span class="prd-tab-colon">:</span></label>
+            <div class="attribute-data">
+              <span class="data">{{ ProductDetail.TenNH }} </span>
+            </div>
+          </li>
+
+
+          <li *ngIf="ProductDetail.Ten">
+            <label class="label">Tên <span class="prd-tab-colon">:</span>
+            </label>
+            <div class="attribute-data">
+              <span class="data">{{ ProductDetail.Ten }} </span>
+            </div>
+          </li>
+
+
+          <li *ngIf="ProductDetail.MaSP">
+            <label class="label">Mã sản phẩm <span class="prd-tab-colon">:</span>
+            </label>
+            <div class="attribute-data">
+              <span class="data">{{ ProductDetail.MaSP }} </span>
+            </div>
+          </li>
+
+
+          <li *ngIf="ProductDetail.DongSanPham">
+            <label class="label">Dòng sản phẩm <span class="prd-tab-colon">:</span>
+            </label>
+            <div class="attribute-data">
+              <span class="data">{{ ProductDetail.DongSanPham }} </span>
+            </div>
+          </li>
+
+
+          <li *ngIf="ProductDetail.BoSuuTap">
+            <label class="label">Bộ sưu tập <span class="prd-tab-colon">:</span></label>
+            <div class="attribute-data">
+              <span class="data">{{ ProductDetail.BoSuuTap }} </span>
+            </div>
+          </li>
+
+
+
+          <li *ngIf="ProductDetail.NoiSanXuat">
+            <label class="label">Nơi sản xuất <span class="prd-tab-colon">:</span></label>
+            <div class="attribute-data">
+              <span class="data">{{ ProductDetail.NoiSanXuat }} </span>
+            </div>
+          </li>
+
+
+
+          <li *ngIf="ProductDetail.CheDoBaoHanh">
+            <label class="label">Chế độ bảo hành <span class="prd-tab-colon">:</span></label>
+            <div class="attribute-data">
+              <span class="data">{{ ProductDetail.CheDoBaoHanh }} </span>
+            </div>
+          </li>
+
+
+          <li *ngIf="ProductDetail.CuaHangPhanPhoi">
+            <label class="label">Cửa hàng phân phối <span class="prd-tab-colon">:</span></label>
+            <div class="attribute-data">
+              <span class="data">{{ ProductDetail.CuaHangPhanPhoi }} </span>
+            </div>
+          </li>
+
+
+
+          <li *ngIf="ProductDetail.PhuKienTheoKem">
+            <label class="label">Phụ kiện theo kèm <span class="prd-tab-colon">:</span></label>
+            <div class="attribute-data">
+              <span class="data">{{ ProductDetail.PhuKienTheoKem }} </span>
+            </div>
+          </li>
+
+
+          <ng-container *ngIf="
+              ProductDetail.CheDoVanChuyen && ProductDetail.ChiTietVanChuyen;
+              then cdvc_ctvc;
+              else cdvc
+            "></ng-container>
+          <ng-template #cdvc_ctvc>
+            <li>
+              <label class="label">{{ ProductDetail.CheDoVanChuyen }}
+                <span class="prd-tab-colon">:</span>
+              </label>
+
+              <div class="attribute-data">
+                <span class="data">{{ ProductDetail.ChiTietVanChuyen }} </span>
+              </div>
+            </li>
+          </ng-template>
+          <ng-template #cdvc>
+            <li *ngIf="ProductDetail.CheDoVanChuyen">
+              <label class="label" style="width: 100%">{{ ProductDetail.CheDoVanChuyen }}
+              </label>
+            </li>
+          </ng-template>
+        </ul>
+      </div>
+      <div class="attribute-group">
+        <h3>Đặc tính sản phẩm</h3>
+        <ul class="attribute-list">
+
+          <li *ngIf="ProductDetail.KichThuocSanPham">
+            <label class="label">Kích thước sản phẩm <span class="prd-tab-colon">:</span></label>
+            <div class="attribute-data">
+              <span class="data">{{ ProductDetail.KichThuocSanPham }} </span>
+            </div>
+          </li>
+
+
+
+          <li *ngIf="ProductDetail.GioiTinh">
+            <label class="label">Giới tính <span class="prd-tab-colon">:</span></label>
+            <div class="attribute-data">
+              <span class="data">{{ ProductDetail.GioiTinh }} </span>
+            </div>
+          </li>
+
+
+
+          <li *ngIf="ProductDetail.ChatLieu">
+            <label class="label">Chất liệu <span class="prd-tab-colon">:</span></label>
+            <div class="attribute-data">
+              <span class="data">{{ ProductDetail.ChatLieu }} </span>
+            </div>
+          </li>
+
+
+          <li *ngIf="ProductDetail.MauSac">
+            <label class="label">Màu sắc <span class="prd-tab-colon">:</span></label>
+            <div class="attribute-data">
+              <span class="data">{{ ProductDetail.MauSac }} </span>
+            </div>
+          </li>
+
+
+
+          <li *ngIf="ProductDetail.PhanThan">
+            <label class="label">Phần thân <span class="prd-tab-colon">:</span></label>
+            <div class="attribute-data">
+              <span class="data">{{ ProductDetail.PhanThan }} </span>
+            </div>
+          </li>
+
+
+
+          <li *ngIf="ProductDetail.LopLot">
+            <label class="label">Lớp lót <span class="prd-tab-colon">:</span></label>
+            <div class="attribute-data">
+              <span class="data">{{ ProductDetail.LopLot }} </span>
+            </div>
+          </li>
+
+
+
+          <li *ngIf="ProductDetail.DeGiay">
+            <label class="label">Đế giày <span class="prd-tab-colon">:</span></label>
+            <div class="attribute-data">
+              <span class="data">{{ ProductDetail.DeGiay }} </span>
+            </div>
+          </li>
+
+
+
+          <li *ngIf="ProductDetail.TinhNangSanPham">
+            <label class="label">Tính năng sản phẩm <span class="prd-tab-colon">:</span></label>
+            <div class="attribute-data">
+              <span class="data">{{ ProductDetail.TinhNangSanPham }} </span>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </mat-tab><!-- end tab thông số kỹ thuật -->
+
+  <mat-tab label="Mô tả"> </mat-tab><!-- end tab Mô tả -->
+
+  <mat-tab label="Đánh giá">
+    <form class="form-horizontal" id="form-review">
+      <h2 class="pt-1">Đưa ra đánh giá của bạn</h2>
+      <div class="form-group required pb-2">
+        <div class="col-sm-12">
+          <input type="text" name="name" value="" id="input-name" class="form-control" placeholder="Tên của bạn:" />
+        </div>
+      </div>
+      <div class="form-group required pt-2 pb-2">
+        <div class="col-sm-12">
+          <textarea name="text" rows="5" id="input-review" class="form-control" placeholder="Bình luận:"></textarea>
+        </div>
+      </div>
+      <div class="box-review pt-1 pb-2">
+        <p class="d-inline" style="color: 15px !important; font-weight: bold">
+          Đánh giá:
+        </p>
+        <div class="ratings d-inline">
+          <div class="rating-box d-inline" style="color: #dddddd !important">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+          </div>
+        </div>
+      </div>
+      <div class="buttons clearfix">
+        <div class="pull-right">
+          <button type="button" id="button-review" data-loading-text="Đang Xử lý..." class="btn btn-primary">
+            Gửi
+          </button>
+        </div>
+      </div>
+    </form>
+  </mat-tab>
+  <!-- end tab đánh giá -->
+  <mat-tab label="Tags">
+    <div class="tab-pane active" id="tab-tags">
+      <p>
+        <a>{{ProductDetail.BoSuuTap}}</a>,
+        <a>{{ProductDetail.DongSanPham}}</a>,
+        <a>{{ProductDetail.Ten}}</a>, <a>{{ProductDetail.MaSP}}</a>, <a>{{ProductDetail.MauSac}}</a>,
+      </p>
+    </div>
+  </mat-tab>
+</mat-tab-group>

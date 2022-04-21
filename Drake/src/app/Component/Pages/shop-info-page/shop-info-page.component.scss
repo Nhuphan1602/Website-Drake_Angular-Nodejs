@@ -1,0 +1,66 @@
+span {
+  font-size: 18px;
+  font-family: "Times New Roman", Times, serif;
+}
+
+div {
+  display: block;
+}
+
+a {
+  color: #e20c0c !important;
+  text-decoration: none;
+  outline: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+a:hover {
+  color: #990808 !important;
+  text-decoration: none !important;
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.store-intro {
+  margin-top: 40px;
+}
+
+.store-intro .store-item {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.image1 {
+  margin-bottom: -10px;
+}
+
+.store-intro .description-box {
+  text-align: left;
+  background-color: #f3f3f3;
+  padding: 30px 30px 25px 30px;
+  color: #222;
+  line-height: 1.4;
+  font-size: 15px;
+}
+
+.fade {
+  transition: opacity 0.15s linear;
+}
+
+.fade.in {
+  opacity: 1;
+}
+
+.modal {
+  margin-top: 200px;
+}
+
+.modal-lg {
+  overflow: hidden;
+}

@@ -1,0 +1,105 @@
+.attribute-data {
+  float: left;
+  font-weight: 300;
+  line-height: 18px;
+  color: #000;
+  width: 53%;
+  font-family: Tahoma, sans-serif;
+  white-space: pre-wrap;
+}
+.attribute-group {
+  width: 50%;
+}
+.product-attributes .attribute-group ul li label {
+  font-weight: 600;
+  color: #24272b;
+  text-transform: uppercase;
+  width: 47%;
+  text-align: left;
+  font-size: 13px;
+  padding: 0;
+  margin: 0;
+  line-height: 18px;
+  white-space: normal;
+  float: left;
+}
+#form-review,
+.attribute-group {
+  padding: 10px;
+}
+
+.product-attributes ul li {
+  font-size: 13px;
+  border-bottom: solid 1px #dbdfe5;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  float: left;
+  width: 100%;
+}
+
+.product-attributes ul {
+  padding-left: 0;
+}
+
+.product-attributes .attribute-group h3 {
+  text-transform: uppercase;
+  font-size: 17px;
+  font-weight: 600;
+  color: #414c5c;
+  border-bottom: solid 2px #414c5c;
+  padding-bottom: 5px;
+  padding-top: 10px;
+  margin-bottom: 20px;
+}
+
+#form-review h2 {
+  font-size: 18px !important;
+  font-weight: bold;
+}
+
+#form-review .form-control textarea {
+  background: #fff;
+  border: 1px solid #ccc;
+  font-size: 13.5px;
+  line-height: 1.4;
+  border-radius: 3px;
+  background-color: #eee;
+  border: none;
+  color: #3d3d3d;
+  padding: 9px;
+  box-shadow: none !important;
+  transition: all 0.3s ease;
+}
+
+#button-review {
+  background: #f8c052;
+  border: none;
+  float: right;
+}
+
+.tab-content > .active {
+  display: block;
+}
+
+#tab-tags {
+  padding: 28px 24px 18px 24px;
+  font-size: 15px;
+}
+#tab-tags a {
+  color: #e20c0c;
+}
+
+#tab-tags,
+.product-attributes,
+#form-review {
+  border: 1px solid #eaeaea;
+}
+
+@media (max-width: 750px) {
+  .product-attributes {
+    flex-direction: column;
+  }
+  .attribute-data {
+    display: block;
+  }
+}

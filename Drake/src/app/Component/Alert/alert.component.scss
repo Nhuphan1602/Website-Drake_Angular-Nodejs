@@ -1,0 +1,38 @@
+.success-alert {
+  background-color: #c3f3d7;
+  border-left: 0.5rem solid #2fd573;
+  color: #24ad5d;
+}
+.danger-alert {
+  background-color: #ffe0e3;
+  border-left: 0.5rem solid #ff4858;
+  color: #ff4858;
+}
+.warning-alert {
+  background-color: #ffdb9b;
+  border-left: 0.5rem solid #ffa503;
+  color: #ce8501;
+}
+.alert-container {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.25rem;
+  white-space: nowrap;
+  font-size: 1rem;
+}
+.alert-container .icon-area,
+.alert-container .text-area,
+.alert-container .close-button-area {
+  display: inline-block;
+}
+.alert-container .icon-area {
+  margin-right: 0.5rem;
+}
+.alert-container .text-area {
+  font-weight: 500;
+}
+.alert-container .close-button-area {
+  margin-left: 1.5rem;
+  cursor: pointer;
+}

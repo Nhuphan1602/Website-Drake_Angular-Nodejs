@@ -1,0 +1,18 @@
+<div class="SortSelectContainer">
+  <div class="SortSelect">
+    <!--Chỉnh font-size độ cao của form, width chỉnh độ rộng-->
+    <mat-form-field appearance="outline" style="font-size: 1rem; width: 13 rem">
+      <mat-label style="font-size: 1.1rem">Sắp xếp:</mat-label>
+      <mat-select panelClass="mat-select" [(ngModel)]="SortOptionValue" (ngModelChange)="onChange()">
+        <!--Chỉnh phần chọn trong style.scss-->
+        <mat-option value="A,MaSP">Mặc định</mat-option>
+        <mat-option value="A,Gia">Giá (Thấp -> Cao)</mat-option>
+        <mat-option value="D,Gia">Giá (Cao -> Thấp)</mat-option>
+        <mat-option value="A,TrangThai">Trạng thái (New Items)</mat-option>
+        <mat-option value="D,TrangThai">Trạng thái (Restock)</mat-option>
+        <mat-option value="A,Ten">Tên (A -> Z)</mat-option>
+        <mat-option value="D,Ten">Tên (Z -> A)</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div style="width: 65%;margin: 0 auto 2.5rem auto">
+    <navigator></navigator>
+    <h1 class='title'>Voucher</h1>
+    <div class="mytable">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td class="column-1 text-center">Mã giảm giá</td>
+                    <td class="column-2 text-left">Giá trị</td>
+                    <td class="column-3 text-left">Hạn sử dụng</td>
+                    <td class="column-4 text-right">Số lần sử dụng</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let Voucher of ListVouchers; let i = index">
+                    <td class="column-1 text-center">{{Voucher.Ten}}</td>
+                    <td class="column-2 text-left">{{Voucher.DieuKien === 0 ? 'Giảm '+Voucher.GiaTri*100+'% hóa đơn' :
+                        'Giảm '+Voucher.GiaTri*100+'% cho hóa đơn trên '
+                        +(Voucher.DieuKien|numberWithDots)+'đ'}}</td>
+                    <td class="column-3 text-left">{{Voucher.HanSuDung | VnDatetime}}</td>
+                    <td class="column-4 text-right">{{Voucher.SoLanSuDung}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="button-container">
+        <button class="btn btn-default" (click)="ToProfilePage()">Trở về</button>
+        <button class="btn btn-primary" (click)="ToInvoicePage()">Lịch sử đặt hàng</button>
+    </div>
+</div>

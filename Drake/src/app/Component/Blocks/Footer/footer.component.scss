@@ -1,0 +1,56 @@
+footer > p {
+  color: #000000;
+}
+
+footer input {
+  border: none; /* <-- This thing here */
+  border: solid 1px #e1e1e1;
+  border-radius: 25px;
+}
+footer button {
+  background-color: #f8c052 !important;
+  border-radius: 0px 25px 25px 0;
+  height: 40px;
+  width: 120px;
+  color: #ffffffff;
+  font-weight: bold;
+}
+
+footer .sign-text {
+  font-size: 18px !important;
+  margin: 5px 0px 0px 50%;
+}
+
+footer .input-group {
+  width: 70%;
+}
+
+@media (max-width: 991px) {
+  footer .input-group {
+    width: 100%;
+  }
+
+  .footer-top {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  footer .sign-text {
+    margin: 0;
+    text-align: center;
+  }
+  footer .footer-bottom {
+    padding: 10px !important;
+  }
+}
+
+.texthover {
+  text-decoration: none;
+  color: #000000;
+}
+.texthover:hover {
+  color: #e10020;
+  cursor: pointer;
+}

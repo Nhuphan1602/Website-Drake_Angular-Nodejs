@@ -1,0 +1,50 @@
+<div style="width: 65%;margin: 0 auto 2.5rem auto">
+    <navigator></navigator>
+    <div class="infobox">
+        <div class="box1">
+            <h4>Tài khoản của tôi</h4>
+            <ul class="list-group">
+                <li class="list-group-item">Họ tên: {{User.Ho}} {{User.Ten}}</li>
+                <li class="list-group-item">Giới tính: {{User.GioiTinh?'Nam':'Nữ'}}</li>
+                <li class="list-group-item">Ngày sinh: {{User.NgaySinh | VnDate}}</li>
+                <li class="list-group-item">Email: {{User.Email}}</li>
+                <li class="list-group-item">Số điện thoại: {{User.Sdt}}</li>
+            </ul>
+        </div>
+
+        <div class="box2">
+            <h4>Địa chỉ của tôi</h4>
+            <ul class="list-group">
+                <li class="list-group-item">Địa chỉ: {{User.DiaChiChinh}}</li>
+                <li class="list-group-item">Tỉnh thành: {{User.TinhThanh}}</li>
+                <li class="list-group-item">Quận huyện: {{User.QuanHuyen}}</li>
+            </ul>
+        </div>
+    </div>
+    <ul class="function-list">
+        <li (click)="ToAccountPage()">
+            <i class="fas fa-user"></i>
+            <span class="function-list-description">Cập nhật thông tin tài khoản</span>
+        </li>
+        <li (click)="ToPasswordPage()">
+            <i class="fas fa-lock"></i>
+            <span class="function-list-description">Thay đổi mật khẩu</span>
+        </li>
+        <li (click)="ToWishlistPage()">
+            <i class="fas fa-heart"></i>
+            <span class="function-list-description">Danh sách yêu thích</span>
+        </li>
+        <li (click)="ToVoucherPage()">
+            <i class="fas fa-money-check-alt"></i>
+            <span class="function-list-description">Mã giảm giá</span>
+        </li>
+        <li (click)="ToShopcartPage()">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="function-list-description">Giỏ sản phẩm</span>
+        </li>
+        <li (click)="ToInvoicePage()">
+            <i class="fas fa-file-invoice-dollar"></i>
+            <span class="function-list-description">Xem lịch sử Đặt hàng</span>
+        </li>
+    </ul>
+</div>

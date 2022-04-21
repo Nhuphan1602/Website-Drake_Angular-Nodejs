@@ -1,0 +1,25 @@
+<ng-container *ngIf="Type==='success';then success; else others"></ng-container>
+<ng-template #success>
+    <div class="alert-container success-alert" *ngIf="IsAlerted">
+        <div class="icon-area"><i class="fas fa-check-circle"></i></div>
+        <div class="text-area">{{Content}}</div>
+        <div class="close-button-area"><i class="far fa-times-circle" (click)="Close()"></i></div>
+    </div>
+</ng-template>
+<ng-template #others>
+    <ng-container *ngIf="Type==='danger';then danger; else warning"></ng-container>
+</ng-template>
+<ng-template #danger>
+    <div class="alert-container danger-alert" *ngIf="IsAlerted">
+        <div class="icon-area"><i class="fas fa-times-circle"></i></div>
+        <div class="text-area">{{Content}}</div>
+        <div class="close-button-area"><i class="far fa-times-circle" (click)="Close()"></i></div>
+    </div>
+</ng-template>
+<ng-template #warning>
+    <div class="alert-container warning-alert" *ngIf="IsAlerted">
+        <div class="icon-area"><i class="fas fa-exclamation-circle"></i></div>
+        <div class="text-area">{{Content}}</div>
+        <div class="close-button-area"><i class="far fa-times-circle" (click)="Close()"></i></div>
+    </div>
+</ng-template>

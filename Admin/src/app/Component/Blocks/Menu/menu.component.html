@@ -1,0 +1,146 @@
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <div class="brand-link">
+      <img src="assets/img/Drake.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Drake</span>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="#" 
+            routerLink="/thongke"
+            routerLinkActive="active"
+            class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Thống kê
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" 
+            routerLink="/quanlykhachhang"
+            routerLinkActive="active"
+            class="nav-link">
+              <i class="nav-icon fas fa-user-friends"></i>
+              <p>
+                Quản lý khách hàng
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" 
+            routerLink="/quanlyhoadon"
+            routerLinkActive="active"
+            class="nav-link">
+              <i class="nav-icon fas fa-file-invoice"></i>
+              <p>
+                Quản lý hóa đơn
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" 
+            routerLink="/quanlychitiethoadon"
+            routerLinkActive="active"
+            class="nav-link">
+              <i class="nav-icon fas fa-file-invoice-dollar"></i>
+              <p>
+                Quản lý chi tiết hóa đơn
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" 
+            routerLink="/quanlymagiamgia"
+            routerLinkActive="active"
+            class="nav-link">
+              <i class="nav-icon fas fa-percent"></i>
+              <p>
+                Quản lý mã giảm giá
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" 
+            routerLink="/quanlysize"
+            routerLinkActive="active"
+            class="nav-link">
+              <i class="nav-icon fas fa-shoe-prints"></i>
+              <p>
+                Quản lý size
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" 
+            routerLink="/quanlyPTTT"
+            routerLinkActive="active"
+            class="nav-link">
+            <i class="nav-icon fas fa-money-check-alt"></i>
+              <p>
+                Quản lý PTTT
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" 
+            routerLink="/quanlyPTVC"
+            routerLinkActive="active"
+            class="nav-link">
+              <i class="nav-icon fas fa-shipping-fast"></i>
+              <p>
+                Quản lý PTVC
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" 
+            routerLink="/quanlysanpham"
+            routerLinkActive="active"
+            class="nav-link">
+              <i class="nav-icon fas fa-luggage-cart"></i>
+              <p>
+                Quản lý sản phẩm
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" 
+            routerLink="/quanlyspsize"
+            routerLinkActive="active"
+            class="nav-link">
+            <i class="fas fa-box"></i>
+              <p>
+                Quản lý sản phẩm-size
+              </p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper mt-0">
+    <!-- Contains content heree -->
+    <router-outlet></router-outlet>
+    <!-- /Contains content heree -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->

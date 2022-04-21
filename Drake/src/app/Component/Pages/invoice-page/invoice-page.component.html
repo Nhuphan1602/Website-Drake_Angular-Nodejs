@@ -1,0 +1,38 @@
+<div style="width: 65%;margin: 0 auto 2.5rem auto;">
+    <navigator></navigator>
+    <h1 class='title'>Lịch Sử Đặt Hàng</h1>
+    <div class="mytable">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td class="column-1 text-center">Mã hóa đơn</td>
+                    <td class="column-2 text-left">Phương thức thanh toán</td>
+                    <td class="column-3 text-left">Phương thức vận chuyển</td>
+                    <td class="column-4 text-left">Trạng thái</td>
+                    <td class="column-5 text-left">Ngày mua</td>
+                    <td class="column-6 text-left">Ngày nhận hàng</td>
+                    <td class="column-7 text-left">Mã giảm giá</td>
+                    <td class="column-8 text-right">Tổng tiền</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let Invoice of ListInvoices; let i = index">
+                    <td class="column-1 text-center">{{Invoice.MaHD}}</td>
+                    <td class="column-2 text-left">{{Invoice.PhuongThucThanhToan}}</td>
+                    <td class="column-3 text-left">{{Invoice.PhuongThucVanChuyen}}</td>
+                    <td class="column-4 text-left">{{Invoice.TrangThai}}</td>
+                    <td class="column-5 text-left">{{Invoice.Ngaymua | VnDatetime}}</td>
+                    <td class="column-6 text-left">{{Invoice.Ngaynhanhang | VnDatetime}}</td>
+                    <td class="column-7 text-left">{{Invoice.MaGiamGia}}</td>
+                    <td class="column-8 text-right">{{Invoice.TongTien | numberWithDots}}đ</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="button-container">
+        <button class="btn btn-default" (click)="ToProfilePage()">Trở về</button>
+        <button class="btn btn-primary" (click)="ToShopcartPage()">Giỏ hàng</button>
+    </div>
+</div>

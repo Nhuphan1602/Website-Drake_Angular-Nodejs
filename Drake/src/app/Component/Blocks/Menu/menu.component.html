@@ -1,0 +1,125 @@
+<!-- ============= MENU COMPONENT ============== -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-0">
+  <div class="container-fluid">
+    <button id="btn-show-hide-menu" class="navbar-toggler" type="button" data-toggle="collapse"
+      data-bs-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="main_nav">
+      <ul class="navbar-nav">
+        <!--For 1-->
+        <li class="nav-item dropdown has-megamenu" *ngFor="let nh of DanhSachNH; let i = index">
+          <div class="nav-link dropdown-toggle">
+            <a routerLink="/{{ nh.TenNH }}/All" routerLinkActive="active">
+              {{ nh.TenNH | uppercase }}
+            </a>
+          </div>
+
+          <div class="dropdown-menu megamenu" role="menu">
+            <div class="row">
+              <div class="col-md-2">
+                <div class="col-megamenu">
+                  <div class="nav-link">
+                    <a routerLink="/{{ nh.TenNH }}/All" routerLinkActive="active"><img
+                        src="././././assets/logos/{{ nh.TenNH }}.jpg" alt="" />
+                      <h6 class="mb-0">ALL {{ nh.TenNH | uppercase }}</h6>
+                    </a>
+                  </div>
+                </div>
+                <!-- col-megamenu.// -->
+              </div>
+              <!-- end col-3 -->
+
+              <div class="row g-0 col-md-10" style="padding-left: 5% !important">
+                <!--For 2-->
+                <div class="col-md-3" *ngFor="let dm of nh.DM; let i = index">
+                  <div class="col-megamenu">
+                    <div class="flex-column d-flex">
+                      <a class="dropdown-item" routerLink="/{{ nh.TenNH }}/{{ dm.TenDM }}" routerLinkActive="active">
+                        <img src="././././assets/blocks/menu/{{ nh.TenNH }}/{{
+                            dm.TenDM
+                          }}.jpg" alt="aa" />
+                        <h6 class="mb-0">{{ dm.TenDM | uppercase }}</h6>
+                      </a>
+                    </div>
+                  </div>
+                  <!-- col-megamenu.// -->
+                </div>
+                <!--For 2-->
+                <!-- end col-3 -->
+              </div>
+            </div>
+            <!-- end row -->
+          </div>
+          <!-- dropdown-mega-menu.// -->
+        </li>
+        <!--For 1-->
+        <li class="nav-item dropdown has-megamenu">
+          <div class="nav-link dropdown-toggle">
+            <a routerLink="/All/Accessories & Apparel" routerLinkActive="active">
+              ACCESSORIES
+            </a>
+          </div>
+
+          <div class="dropdown-menu megamenu" role="menu">
+            <div class="row">
+              <div class="col-md-2">
+                <div class="col-megamenu">
+                  <div class="nav-link">
+                    <a routerLink="/All/Accessories & Apparel" routerLinkActive="active">
+                      <img src="././././assets/blocks/menu/Accessories/all_accessories & apparel.jpg" alt="aa" />
+                      <h6 class="mb-0">ALL ACCESSORIES</h6>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="row g-0 col-md-10" style="padding-left: 5% !important">
+                <!--For 1-->
+                <div class="col-md-3" *ngFor="let accessory of DanhSachAccessories; let i = index">
+                  <div class="col-megamenu">
+                    <div class="flex-column d-flex">
+                      <a class="dropdown-item" routerLink="/{{
+                          accessory.TenNH
+                        }}/Accessories & Apparel">
+                        <img src="././././assets/blocks/menu/Accessories/{{
+                            accessory.TenNH
+                          }}.jpg" alt="aa" />
+                        <h6 class="mb-0">{{ accessory.TenNH | uppercase }}</h6>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <!--For 1-->
+              </div>
+            </div>
+            <!-- end row -->
+          </div>
+          <!-- dropdown-mega-menu.// -->
+        </li>
+        <li class="nav-item">
+          <div class="nav-link">
+            <a style="color: #ff2c2c" routerLink="/All/Km" routerLinkActive="active">
+              KHUYẾN MÃI
+            </a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <div class="nav-link">
+            <a routerLink="/gioi-thieu-cua-hang" routerLinkActive="active">
+              CỬA HÀNG
+            </a>
+          </div>
+        </li>
+
+      </ul>
+      <div id="search" class="d-flex form-inputs">
+        <input class="form-control" type="text" placeholder="Tìm kiếm" (keydown.enter)="onKeyDownEvent($event.target)">
+        <i class="fas fa-search"></i>
+      </div>
+    </div>
+    <!-- navbar-collapse.// -->
+  </div>
+  <!-- container-fluid.// -->
+</nav>
+<!-- ============= END MENU COMPONENT ============== -->

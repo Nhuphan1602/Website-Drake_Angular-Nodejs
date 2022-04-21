@@ -1,0 +1,239 @@
+<div class="carousel-img-container d-flex">
+  <div class="carousel-img-container-box-1">
+    <img src="/assets/pages/home-page/slider/slider2/new arrival 0321.jpg" alt="" style="width: 100%; height: 100%;" />
+  </div>
+  <div class="carousel-img-container-box-2">
+    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+      <div ngxSlickItem *ngFor="let ele of carousel_list_products; let i = index" class="slide">
+        <div class="product-cards d-flex flex-column text-center">
+          <!-- Card-->
+          <div class="card" style="font-size: 0.87rem;">
+            <!--Tất cả font-size sau đều là phần trăm của thẻ card-->
+
+            <div class="card-body">
+
+              <div class="img-container">
+
+                <img src="{{ ele.pc1.c1_h1 }}" alt="" class="img-fluid"
+                  (click)="FromHomeToProductDetailPage(ele.pc1.MaSP)" />
+
+                <div class="box-label" (click)="FromHomeToProductDetailPage(ele.pc1.MaSP)">
+                  <div class="icon-container">
+                    <ng-container *ngIf=" ele.pc1.TrangThai === 'a-new'; then template_a_new; else template_b_restock">
+                    </ng-container>
+
+                    <ng-template #template_a_new>
+                      <img class="img-fluid" src="assets/trangthai/ICON hot item5aa.png" alt="" />
+                    </ng-template>
+
+                    <ng-template #template_b_restock>
+                      <img *ngIf="ele.pc1.TrangThai === 'b-restock'" class="img-fluid"
+                        src="assets/trangthai/ICON restock4aaa.png" alt="" />
+                    </ng-template>
+
+                  </div>
+
+                  <div *ngIf="ele.pc1.Km > 0" class="label-psale">
+                    <span>{{ ele.pc1.Km * -100 }}%</span>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="caption">
+
+                <div class=" ten" style=" min-height: 2.81rem; max-height: 2.81rem;">
+                  <a (click)="FromHomeToProductDetailPage(ele.pc1.MaSP)">{{ele.pc1.Ten | titlecase}}</a>
+                </div>
+
+                <div class="sku">
+                  # {{ ele.pc1.MaSP }}
+                </div>
+
+                <!--Giá-->
+                <div class="price" style=" min-height: 2.3rem; max-height: 2.3rem;">
+                  <ng-container *ngIf="ele.pc1.Km > 0; then template_Km; else template_0"></ng-container>
+                  <ng-template #template_Km>
+
+
+                    <span>Sale Price: </span>
+
+                    <span class="price-pimary" style="font-size: 100% !important; color: red !important">
+                      <b>{{ ele.pc1.Gia * (1 - ele.pc1.Km) | numberWithDots }}đ</b>
+                    </span>
+
+                    <br />
+
+                    <span>Drake Price: </span>
+
+                    <span class="price-pimary"
+                      style="font-size:90% !important; text-decoration: line-through !important">
+                      <b>{{ ele.pc1.Gia | numberWithDots }}đ</b>
+                    </span>
+
+
+                  </ng-template>
+                  <ng-template #template_0>
+
+                    <span>Drake Price: </span>
+
+                    <span class="price-pimary" style="font-size: 100% !important"><b>{{ ele.pc1.Gia | numberWithDots
+                        }}đ</b></span>
+
+
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="font-size: 0.87rem;">
+            <!--Tất cả font-size sau đều là phần trăm của thẻ card-->
+
+            <div class="card-body">
+
+              <div class="img-container">
+
+                <img src="{{ ele.pc2.c1_h1 }}" alt="" class="img-fluid"
+                  (click)="FromHomeToProductDetailPage(ele.pc2.MaSP)" />
+
+                <div class="box-label" (click)="FromHomeToProductDetailPage(ele.pc2.MaSP)">
+                  <div class="icon-container">
+                    <ng-container *ngIf=" ele.pc2.TrangThai === 'a-new'; then template_a_new; else template_b_restock">
+                    </ng-container>
+
+                    <ng-template #template_a_new>
+                      <img class="img-fluid" src="assets/trangthai/ICON hot item5aa.png" alt="" />
+                    </ng-template>
+
+                    <ng-template #template_b_restock>
+                      <img *ngIf="ele.pc2.TrangThai === 'b-restock'" class="img-fluid"
+                        src="assets/trangthai/ICON restock4aaa.png" alt="" />
+                    </ng-template>
+
+                  </div>
+
+                  <div *ngIf="ele.pc2.Km > 0" class="label-psale">
+                    <span>{{ ele.pc2.Km * -100 }}%</span>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="caption">
+
+                <div class=" ten" style=" min-height: 2.81rem; max-height: 2.81rem;">
+                  <a (click)="FromHomeToProductDetailPage(ele.pc2.MaSP)">{{ele.pc2.Ten | titlecase}}</a>
+                </div>
+
+                <div class="sku">
+                  # {{ ele.pc2.MaSP }}
+                </div>
+
+                <!--Giá-->
+                <div class="price" style=" min-height: 2.3rem; max-height: 2.3rem;">
+                  <ng-container *ngIf="ele.pc2.Km > 0; then template_Km; else template_0"></ng-container>
+                  <ng-template #template_Km>
+
+
+                    <span>Sale Price: </span>
+
+                    <span class="price-pimary" style="font-size: 100% !important; color: red !important">
+                      <b>{{ ele.pc2.Gia * (1 - ele.pc2.Km) | numberWithDots }}đ</b>
+                    </span>
+
+                    <br />
+
+                    <span>Drake Price: </span>
+
+                    <span class="price-pimary"
+                      style="font-size:90% !important; text-decoration: line-through !important">
+                      <b>{{ ele.pc2.Gia | numberWithDots }}đ</b>
+                    </span>
+
+
+                  </ng-template>
+                  <ng-template #template_0>
+
+                    <span>Drake Price: </span>
+
+                    <span class="price-pimary" style="font-size: 100% !important"><b>{{ ele.pc2.Gia | numberWithDots
+                        }}đ</b></span>
+
+
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ngx-slick-carousel>
+  </div>
+</div>
+
+<!-- ============= Home list COMPONENT ============== -->
+<div class="homepage-list-items text-center w-75 mx-auto">
+  <div class="w-100">
+    <img class="img-fluid w-100" src="assets/pages/home-page/list-items-banner/danh-muc-converse-sneaker.jpg" />
+  </div>
+  <product-cards [ProductCards]="converseSneaker_Chuck1970s" [Pagination]="false" [ClassOption]="1"
+    (ImgClick)="FromHomeToProductDetailPage($event)" (TagClick)="FromHomeToProductDetailPage($event)"
+    (HeartIconClick)="InsertIntoWishlist($event)" (ShopCartIconClick)="FromHomeToProductDetailPage($event)"
+    (TenClick)="FromHomeToProductDetailPage($event)">
+  </product-cards>
+  <button class="seemore pt-3 mb-4" (click)="ToProductPage('Converse','All')">See More</button>
+</div>
+<!-- ============= END HOME list COMPONENT ============== -->
+
+<!-- ============= Home list COMPONENT ============== -->
+<div class="homepage-list-items text-center w-75 mx-auto">
+  <img class="img-fluid w-100" src="assets/pages/home-page/list-items-banner/danh-muc-vans-sneaker.jpg" />
+  <product-cards [ProductCards]="vansSneaker" [Pagination]="false" [ClassOption]="1"
+    (ImgClick)="FromHomeToProductDetailPage($event)" (TagClick)="FromHomeToProductDetailPage($event)"
+    (HeartIconClick)="InsertIntoWishlist($event)" (ShopCartIconClick)="FromHomeToProductDetailPage($event)"
+    (TenClick)="FromHomeToProductDetailPage($event)">
+  </product-cards>
+  <button class="seemore pt-3 mb-4" (click)="ToProductPage('Vans','Sneaker')">See More</button>
+</div>
+<!-- ============= END HOME list COMPONENT ============== -->
+
+<!-- ============= Home list COMPONENT ============== -->
+<div class="homepage-list-items text-center w-75 mx-auto">
+  <img class="img-fluid w-100" src="assets/pages/home-page/list-items-banner/danh-muc-palladium-sneaker.jpg" />
+  <product-cards [ProductCards]="palladiumSneaker" [Pagination]="false" [ClassOption]="1"
+    (ImgClick)="FromHomeToProductDetailPage($event)" (TagClick)="FromHomeToProductDetailPage($event)"
+    (HeartIconClick)="InsertIntoWishlist($event)" (ShopCartIconClick)="FromHomeToProductDetailPage($event)"
+    (TenClick)="FromHomeToProductDetailPage($event)">
+  </product-cards>
+  <button class="seemore pt-3 mb-4" (click)="ToProductPage('Palladium','Sneaker')">See More</button>
+</div>
+<!-- ============= END HOME list COMPONENT ============== -->
+
+<!-- ============= Home list COMPONENT ============== -->
+<div class="homepage-list-items text-center w-75 mx-auto">
+  <img class="img-fluid w-100" src="assets/pages/home-page/list-items-banner/danh-muc-supra.jpg" />
+  <product-cards [ProductCards]="supraHighTop_LowTop" [Pagination]="false" [ClassOption]="1"
+    (ImgClick)="FromHomeToProductDetailPage($event)" (TagClick)="FromHomeToProductDetailPage($event)"
+    (HeartIconClick)="InsertIntoWishlist($event)" (ShopCartIconClick)="FromHomeToProductDetailPage($event)"
+    (TenClick)="FromHomeToProductDetailPage($event)">
+  </product-cards>
+  <button class="seemore pt-3 mb-4" (click)="ToProductPage('Supra','All')">See More</button>
+</div>
+<!-- ============= END HOME list COMPONENT ============== -->
+
+<!-- ============= Home list COMPONENT ============== -->
+<div class="homepage-list-items text-center w-75 mx-auto">
+  <img class="img-fluid w-100" src="assets/pages/home-page/list-items-banner/SALE-UP-TO-70.jpg" />
+  <product-cards [ProductCards]="discountProductCards" [Pagination]="false" [ClassOption]="1"
+    (ImgClick)="FromHomeToProductDetailPage($event)" (TagClick)="FromHomeToProductDetailPage($event)"
+    (HeartIconClick)="InsertIntoWishlist($event)" (ShopCartIconClick)="FromHomeToProductDetailPage($event)"
+    (TenClick)="FromHomeToProductDetailPage($event)"></product-cards>
+  <button class="seemore pt-3 mb-4" (click)="ToProductPage('All','Km')">See More</button>
+</div>
+<!-- ============= END HOME list COMPONENT ============== -->
+
+<!-- ===MODAL=== -->
+<modal [id]="'home-page-modal1'" [Type]="'success'" [Content]="'Yêu thích sản phẩm thành công.'"></modal>
+<modal [id]="'home-page-modal2'" [Type]="'danger'" [Content]="'Bạn đã yêu thích sản phẩm này rồi.'"></modal>
+<!-- ===MODAL=== -->

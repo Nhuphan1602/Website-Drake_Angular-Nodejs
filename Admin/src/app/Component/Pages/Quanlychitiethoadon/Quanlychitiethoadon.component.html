@@ -1,0 +1,196 @@
+<section class="content pt-3 mt-50">
+    <div class="container-fluid">
+      <form action="">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-10 offset-md-2">
+            <div class="row">
+              <div class="col-md-3 col-sm-4">
+                <div class="form-group">
+                  <select (change)="onChangeSelect($event)" class="select" style="width: 100%;" placeholder="Tìm kiếm">
+                    <option value="" disabled selected>Tìm kiếm theo</option>
+                    <option *ngFor="let e of ot_timkiem" value="{{e.val}}">{{e.name}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-7 col-sm-8">
+                <div class="form-group">
+                  <div class="input-group">
+                    <input #currentItem (keyup.enter)="onEnter(currentItem.value)"  [(ngModel)]="timkiem" name="timkiem" type="search" class="form-control" placeholder="Type your keywords here">
+                    <div class="input-group-append">
+                      <button (click)="onEnter(currentItem.value)" type="submit" class="btn btn-default">
+                        <i class="fa fa-search"></i>
+                      </button>
+                    </div>
+                    <div class="input-group-append">
+                      <button (click)="refresh()" type="submit" class="btn btn-default">
+                        <i class="fas fa-redo"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Danh sách các hóa đơn chi tiết</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="ds-cthd" class="table table-bordered table-striped">
+                <thead>
+                    <tr class="text-center">
+                    <th>Mã hóa đơn</th>
+                    <th>Mã sản phẩm</th>
+                    <th>Mã size</th>
+                    <th>Số lượng</th>
+                    <th>Giá bán</th>
+                    <th>Sửa/Xóa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="text-center" *ngFor="let cthd of DanhSach_CTHD">
+                        <td>{{cthd.MaHD}}</td>
+                        <td>{{cthd.MaSP}}</td>
+                        <td>{{cthd.MaSize}}</td>
+                        <td>{{cthd.SoLuong}}</td>
+                        <td>{{cthd.GiaBan | numberWithDots}}đ</td>
+                        <td class="text-center">
+                            <div class="btn-group" style="margin-top: 5px;">
+                              <button type="button" (click)="getCTSP(cthd.TenSP,cthd.GiaTriSize)" data-toggle="modal" data-target="#xem-hdct-modal" class="btn btn-warning"><i class="fas fa-eye"></i></button>
+                              <button type="button" (click)="getSaveCTHD(cthd)" data-toggle="modal" data-target="#sua-hdct-modal" class="btn btn-info"><i class="fas fa-edit"></i></button>
+                              <button type="button" (click)="getCTHD(cthd)" data-toggle="modal" data-target="#xoa-hdct-modal" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+    
+</section>
+  <!-- /.content -->
+<div id="xoa-hdct-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="Xoa-kh-ModalLabel">Xóa hóa đơn chi tiết</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>Bạn có muốn xóa hóa đơn chi tiết này hay không ?</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+        <button type="button" (click)="deleteCTHD()" class="btn btn-primary">Xóa</button>
+    </div>
+    </div>
+</div>
+</div>
+
+<div id="sua-hdct-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+      <div class="modal-header">
+          <h5 class="modal-title" id="kh-ModalLabel">Chỉnh sửa hóa đơn chi tiết</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body">
+          <form>
+          <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <label  class="col-form-label">Mã hóa đơn:</label>
+                  <select name="mahd" [(ngModel)]="mahd" class="select" style="width: 100%;">
+                    <option *ngFor="let item of Option_MaHD" value="{{item.MaHD}}">{{item.MaHD}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label  class="col-form-label">Mã sản phẩm:</label>
+                  <select name="masp" [(ngModel)]="masp" class="select" style="width: 100%;">
+                    <option *ngFor="let item of Option_MaSP" value="{{item.MaSP}}">{{item.MaSP}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-6">
+              <div class="form-group">
+                  <label  class="col-form-label">Mã size:</label>
+                  <select name="masize" [(ngModel)]="masize" class="select" style="width: 100%;">
+                    <option *ngFor="let item of Option_MaSize" value="{{item.MaSize}}">{{item.MaSize}}</option>
+                  </select>
+              </div>
+              </div>
+              <div class="col-6">
+              <div class="form-group">
+                  <label  class="col-form-label">Số lượng:</label>
+                  <input type="number" [(ngModel)]="soluong" name="soluong" class="form-control">
+              </div>
+              </div>
+              <div class="col-6">
+              <div class="form-group">
+                  <label  class="col-form-label">Giá bán:</label>
+                  <input type="number" [(ngModel)]="giaban" name="giaban" class="form-control">
+              </div>
+              </div>
+          </div>
+          </form>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+          <button type="button" (click)="saveCTHD()" class="btn btn-primary">Lưu</button>
+      </div>
+      </div>
+  </div>
+</div>
+
+<div id="xem-hdct-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="kh-ModalLabel">Xem thông tin chi tiết</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <table id="ds-cthd" class="table table-bordered table-striped">
+        <thead>
+          <tr class="text-center">
+          <th>Tên sản phẩm</th> 
+          <th>Giá trị size</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-center">
+            <td>{{tensp}}</td>
+            <td>{{giatrisize}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+      </div>
+    </div>
+  </div>
+</div>

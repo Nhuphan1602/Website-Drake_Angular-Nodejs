@@ -1,0 +1,80 @@
+<!--navigator-->
+<ng-container *ngIf="
+    TenNH === 'All';
+    then template_AllAccessories_AllKm;
+    else template_NotAllAccessories_AllKm
+  "></ng-container>
+<ng-template #template_AllAccessories_AllKm>
+  <div class="navigator">
+    <!--TRANG CHỦ-->
+    <a (click)="ToHome()">Trang chủ </a>
+    <!---->
+
+    <i class="fas fa-chevron-right"></i>
+
+    <!--All Accessories || Khuyến mãi-->
+    <a (click)="ToProductPage()"> {{ TenDM === "Km" ? "Khuyến mãi" : "All Accessories & Apparel" }}</a>
+    <!---->
+  </div>
+</ng-template>
+<ng-template #template_NotAllAccessories_AllKm>
+  <ng-container *ngIf="TenDM === 'All'; then template_NhAll; else template_NotNhAll"></ng-container>
+  <ng-template #template_NhAll>
+    <div class="navigator">
+      <!--TRANG CHỦ-->
+      <a (click)="ToHome()">Trang chủ </a>
+      <!---->
+
+      <i class="fas fa-chevron-right"></i>
+
+      <!--PHẦN NHÃN HIỆU - All DANH MỤC-->
+      <a (click)="ToProductPage()"> All {{ TenNH }}</a>
+      <!---->
+    </div>
+  </ng-template>
+  <ng-template #template_NotNhAll>
+    <div class="navigator">
+      <!--TRANG CHỦ-->
+      <a (click)="ToHome()">Trang chủ </a>
+      <!---->
+
+      <i class="fas fa-chevron-right"></i>
+
+      <!--PHẦN NHÃN HIỆU-->
+      <a (click)="ToProductPage(TenNH, 'All')"> {{ TenNH }} </a>
+      <!---->
+
+      <i class="fas fa-chevron-right"></i>
+
+      <!--PHẦN DANH MỤC-->
+      <a (click)="ToProductPage()"> {{ TenDM }}</a>
+      <!---->
+    </div>
+  </ng-template>
+</ng-template>
+<!---->
+
+<!--BANNER-->
+<img src="././././assets/pages/product-page/banner/{{ TenNH | lowercase }}/{{
+    TenDM | lowercase
+  }}/{{ TenNH }}-{{ TenDM }}.jpg" style="width: 100%; height: 100%; max-height: 100%" />
+<!---->
+
+<!--TEXT-->
+<div class="text">
+  <p>
+    {{
+    TenDM === "Km"
+    ? "SẢN PHẨM KHUYẾN MÃI"
+    : TenDM === "All"
+    ? (TenDM | uppercase) + " " + (TenNH | uppercase)
+    : TenNH === "Vans" &&
+    TenDM !== "Sneaker" &&
+    TenDM !== "Kid" &&
+    TenDM !== "Accessories & Apparel"
+    ? (TenDM | uppercase)
+    : (TenNH | uppercase) + " " + (TenDM | uppercase)
+    }}
+  </p>
+</div>
+<!---->

@@ -1,0 +1,52 @@
+.mytable table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1.25rem;
+  padding: 1.25rem;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  color: #666;
+}
+.mytable table td {
+  border: 1px solid #ddd !important;
+  white-space: normal;
+}
+.mytable table span.mytable-link {
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+.mytable table span.mytable-link:hover {
+  color: #e20c0c !important;
+}
+.mytable table thead tr {
+  background-color: rgba(51, 51, 51, 0.1);
+  font-weight: bold;
+  color: #666;
+}
+.mytable table tr td input[type="checkbox"] {
+  width: 100%;
+  height: 1rem;
+}
+.mytable table tbody tr td img {
+  cursor: pointer;
+}
+.mytable table tbody tr td .btn {
+  padding: 0.625rem 1.25rem;
+  border: none;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.mytable table tbody tr td .btn-primary {
+  background-color: #e64530;
+}
+.mytable table tbody tr td .btn-primary:hover {
+  background-color: #177ecf;
+}
+.mytable table tbody tr td .btn-danger {
+  background-color: #f2be30;
+}
+.mytable table tbody tr td .btn-danger:hover {
+  background-color: #7dbf03;
+}

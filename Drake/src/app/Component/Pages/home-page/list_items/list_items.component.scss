@@ -1,0 +1,90 @@
+div.carousel-img-container {
+  width: 100%;
+  height: 76.9%;
+  margin-top: 4%;
+}
+div.carousel-img-container div.carousel-img-container-box-2,
+div.carousel-img-container-box-1 {
+  width: 50%;
+  height: 100%;
+}
+div.carousel-img-container div.carousel-img-container-box-2 .carousel {
+  width: 100%;
+  height: 100%;
+}
+
+div.carousel-img-container div.carousel-img-container-box-2 .carousel .slide {
+  width: 100%;
+  height: 76.9vh !important; //Để height theo phần trăm nó kh hiểu.
+}
+
+div.carousel-img-container
+  div.carousel-img-container-box-2
+  .carousel
+  .slide
+  div.product-cards {
+  width: 85%;
+  height: 100%;
+  margin: 0 auto;
+}
+div.carousel-img-container
+  div.carousel-img-container-box-2
+  .carousel
+  .slide
+  div.product-cards
+  div.card {
+  height: 50% !important;
+}
+
+.homepage-list-items {
+  margin-top: 8%;
+}
+
+@media (max-width: 580px) {
+  .homepage-items {
+    padding: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  div.carousel-img-container {
+    flex-direction: column;
+  }
+  div.carousel-img-container div {
+    width: 100vw;
+  }
+
+  div.carousel-img-container div.carousel-img-container-box-2 {
+    padding: 5%;
+  }
+}
+
+@media (max-width: 1150px) {
+  div.carousel-img-container {
+    flex-direction: column;
+  }
+  div.carousel-img-container div {
+    width: 100%;
+    padding: 5%;
+  }
+}
+
+.seemore {
+  padding: 0.5rem 2rem !important;
+  background-color: #fff;
+  border: 0.125rem solid #f8c052;
+  border-radius: 0.25rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #f8c052;
+  -webkit-transition: all ease-in 0.3s;
+  -o-transition: all ease-in 0.3s;
+  transition: all ease-in 0.3s;
+}
+
+.seemore:hover,
+.seemore:focus {
+  border-color: #333333;
+  background-color: #333333;
+  color: #ffffff;
+}

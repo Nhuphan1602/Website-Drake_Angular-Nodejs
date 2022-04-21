@@ -1,0 +1,49 @@
+<div style="width: 65%;margin: 0 auto 2.5rem auto;">
+    <navigator></navigator>
+    <div class="d-flex justify-content-between">
+        <div class="box1">
+            <div class="well">
+                <h2>Khách hàng mới</h2>
+                <p>Bằng cách tạo tài khoản bạn có thể mua sắm nhanh hơn, cập
+                    nhật tình trạng đơn hàng, theo dõi những đơn hàng đã đặt
+                    và đặc biệt là sẽ được hưởng nhiều chương trình ưu đãi!
+                </p>
+                <button (click)="ToRegisterPage()" class="btn btn-primary">Tiếp tục</button>
+            </div>
+        </div>
+
+        <div class="box2">
+            <div class="well">
+                <h2>Khách hàng cũ</h2>
+                <form #form='ngForm'>
+                    <div class="form-group">
+                        <label class="form-label">Địa chỉ E-Mail:</label>
+                        <input type="email" class="form-control" name="email" placeholder="Địa chỉ E-Mail:" ngModel
+                            #email='ngModel' [class.is-invalid]="email.invalid && email.touched"
+                            [class.is-valid]='email.valid' required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                        <div class="invalid-feedback">
+                            <p>Email không hợp lệ!</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Mật Khẩu:</label>
+                        <input type="password" class="form-control" name="password" autocomplete="on"
+                            placeholder="Mật Khẩu:" ngModel #password='ngModel'
+                            [class.is-invalid]="password.invalid && password.touched" [class.is-valid]='password.valid'
+                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                        <div class="invalid-feedback">
+                            <p>Phải chứa ít nhất một số và một chữ cái viết hoa và viết thường và ít nhất 8 ký tự trở
+                                lên
+                            </p>
+                        </div>
+                    </div>
+                </form>
+
+                <button class="btn btn-primary" [attr.disabled]="form.invalid?'true':null"
+                    (click)="DangNhap(form.value.email,form.value.password)">Đăng
+                    nhập</button>
+            </div>
+        </div>
+    </div>
+    <modal [id]="'login-page-modal1'" [Type]="'danger'" Content="'Đăng nhập thất bại'"></modal>
+</div>

@@ -1,0 +1,38 @@
+.SortSelectContainer {
+  margin: 1rem 0 0 0;
+  position: relative;
+  height: 5rem;
+}
+.SortSelect1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.SortSelect2 {
+  position: absolute;
+  top: 55%;
+  transform: translateY(-50%);
+  right: 0;
+}
+
+.SortSelect1 table {
+  border-collapse: collapse;
+}
+.SortSelect1 table tr th {
+  border: 1px solid black;
+}
+.SortSelect1 table tr th button {
+  font-size: 1.25rem;
+}
+.SortSelect1 table tr:first-child th {
+  border-top: 0;
+  border-bottom: 0;
+}
+
+.SortSelect1 table tr th:first-child {
+  border-left: 0;
+}
+.SortSelect1 table tr th:last-child {
+  border-right: 0;
+}

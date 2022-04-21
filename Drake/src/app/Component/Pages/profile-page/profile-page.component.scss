@@ -1,0 +1,45 @@
+.infobox .box1 {
+  width: 100%;
+  margin-bottom: 2.5rem;
+}
+.infobox .box2 {
+  width: 60%;
+}
+h4 {
+  margin: 0 0 0.625rem 0;
+  color: #000;
+  font-size: 1.5rem;
+}
+
+.function-list {
+  padding: 0;
+  margin-top: 2.5rem;
+  list-style: none;
+  overflow: hidden;
+}
+.function-list li {
+  float: left;
+  width: 33.33%;
+  padding: 1.875rem 0;
+  cursor: pointer;
+
+  text-align: center;
+  font-size: 1rem;
+  border: 1px solid #edecec;
+  background: #fff;
+}
+.function-list li:hover {
+  background: rgb(255, 243, 220);
+}
+
+.function-list .fas {
+  font-size: 2rem;
+  color: #f8c052;
+}
+
+.function-list .function-list-description {
+  display: block;
+  margin-top: 0.625rem;
+  color: #333;
+  user-select: none;
+}

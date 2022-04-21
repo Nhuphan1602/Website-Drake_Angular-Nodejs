@@ -1,0 +1,149 @@
+<!-- ============= HEADER COMPONENT ============== -->
+<header id="header" class="section-header">
+  <div class="header-top">
+    <ul class="list-group list-group-horizontal">
+      <li class="list-group-item">
+        Hotline: <a href="tel:1800.0080 "><b>1800.0080</b></a>
+      </li>
+
+      <ng-container *ngIf="MaKH; then template_uie; else template_uine"></ng-container>
+      <ng-template #template_uie>
+        <li class="list-group-item">
+          <a (click)="ToProfilePage()"><i class="fas fa-user"></i> Tài khoản</a>
+        </li>
+        <li class="list-group-item">
+          <a (click)="DangXuat()"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+        </li>
+      </ng-template>
+      <ng-template #template_uine>
+        <li class="list-group-item">
+          <a (click)="ToRegisterPage()"><i class="fas fa-lock"></i> Đăng Ký</a>
+        </li>
+        <li class="list-group-item">
+          <a (click)="ToLoginPage()"><i class="fas fa-user"></i> Đăng Nhập</a>
+        </li>
+      </ng-template>
+    </ul>
+  </div>
+  <div class="header-bottom">
+    <div id="brand" class="d-flex justify-content-center align-item-center">
+      <a (click)="ToHome()"> <img src="assets/logos/Drake.png" title="Drake Vietnam " alt="Drake Vietnam " /></a>
+      <div class="shopcart-heart align-self-end">
+        <ul>
+          <li class="heart">
+            <i class="far fa-heart"></i>
+            <ul class="heartbox">
+              <ng-container
+                *ngIf="WishListItems.length === 0; then template_wishlist_have_no_item;else template_wishlist_have_items">
+              </ng-container>
+              <ng-template #template_wishlist_have_no_item>
+                <li id="text-container">Wish List đang trống</li>
+              </ng-template>
+              <ng-template #template_wishlist_have_items>
+                <li id="items-container">
+                  <table>
+                    <tr *ngFor="let WishListItem of WishListItems; let i = index">
+                      <td style="width: 20%">
+                        <img src="{{ WishListItem.Hinh }}" class="img-fluid" alt="" />
+                      </td>
+                      <td class="text-center" style="width: 40%">
+                        {{ WishListItem.Ten }}
+                      </td>
+                      <td class="text-center" style="width: 15%; white-space: pre-wrap;">
+                        {{ WishListItem.TinhTrang }}
+                      </td>
+                      <td class="text-center" style="width: 25%">
+                        {{ WishListItem.Gia*(1-WishListItem.Km) | numberWithDots}}đ
+                      </td>
+                    </tr>
+                  </table>
+                </li>
+                <li class="d-flex justify-content-around" id="btn-container">
+                  <button (click)="ToWishlistPage()">Wish List</button>
+                  <button>
+                    <i class="fas fa-heart">({{WishListItems.length}})</i>
+                  </button>
+                </li>
+              </ng-template>
+            </ul>
+          </li>
+        </ul>
+
+        <ul>
+          <li class="shopcart">
+            <i class="fas fa-shopping-cart"></i>
+            <ul class="shopcartbox">
+              <ng-container
+                *ngIf="ShopCartItems.length === 0; then template_shopcart_have_no_item;else template_shopcart_have_items">
+              </ng-container>
+              <ng-template #template_shopcart_have_no_item>
+                <li id="text-container">Giỏ hàng đang trống</li>
+              </ng-template>
+              <ng-template #template_shopcart_have_items>
+                <li id="items-container">
+                  <table>
+                    <tr *ngFor="let ShopCartItem of ShopCartItems; let i = index">
+                      <td style="width: 20%">
+                        <img src="{{ ShopCartItem.Hinh }}" class="img-fluid" alt="" />
+                      </td>
+                      <td class="text-center" style="width: 45%">
+                        {{ ShopCartItem.Ten }}
+                        <br />
+                        {{ ShopCartItem.GiaTriSize }}
+                      </td>
+                      <td class="text-center" style="width: 10%">
+                        x<br />{{ ShopCartItem.SoLuong }}
+                      </td>
+                      <td class="text-center" style="width: 25%">
+                        {{ ShopCartItem.Gia*(1-ShopCartItem.Km) | numberWithDots}}đ
+                      </td>
+                    </tr>
+                  </table>
+                </li>
+                <li class="d-flex justify-content-around" id="btn-container">
+                  <button (click)=" ToShopcartPage()">Giỏ Hàng</button>
+                  <button>{{TongCong | numberWithDots}}đ</button>
+                </li>
+              </ng-template>
+            </ul>
+            <div class="shop-cart-badge">{{ShopCartItems.length}}</div>
+          </li>
+
+        </ul>
+
+      </div>
+    </div>
+    <div id="carouseltextControls" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="carousel-caption">
+            <p>
+              Đăng ký hoặc gọi 1800.0080 để cập nhật chương trình khuyến mãi
+            </p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-caption">
+            <p>Email hỗ trợ: support@drake.vn</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-caption">
+            <p>Miễn phí vận chuyển toàn quốc</p>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev color-primary" data-bs-target="#carouseltextControls" role="button"
+        data-bs-slide="prev">
+        <span><i class="fa fa-angle-left" aria-hidden="true"></i></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" data-bs-target="#carouseltextControls" role="button" data-bs-slide="next">
+        <span><i class="fa fa-angle-right" aria-hidden="true"></i></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+</header>
+<!-- section-header.// -->
+<!-- ============= END COMPONENT ============== -->

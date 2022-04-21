@@ -1,0 +1,124 @@
+<!--navigator-->
+<ng-container *ngIf="urlSegment_1 === 'search' then template_SearchPage; else template_NotSearchPage">
+</ng-container>
+<ng-template #template_SearchPage>
+    <div class="navigator">
+        <!--TRANG CHỦ-->
+        <a (click)="ToHome()">Trang chủ </a>
+        <!---->
+
+        <i class="fas fa-chevron-right"></i>
+
+        <!--Tìm kiếm-->
+        <a (click)="ToSearchPage()"> Tìm kiếm - {{this.urlSegment_2}} </a>
+        <!---->
+
+        <i class="fas fa-chevron-right"></i>
+
+        <!--PHẦN MÃ SẢN PHẨM-->
+        <a (click)="FromSearchPageToProductDetailPage()"> {{MaSP}}</a>
+        <!---->
+    </div>
+</ng-template>
+
+<ng-template #template_NotSearchPage>
+
+    <ng-container *ngIf="urlSegment_1 === '' && urlSegment_2 === '' then template_HomePage; else template_ProductPage">
+    </ng-container>
+
+    <ng-template #template_HomePage>
+        <div class="navigator">
+            <!--TRANG CHỦ-->
+            <a (click)="ToHome()">Trang chủ </a>
+            <!---->
+
+            <i class="fas fa-chevron-right"></i>
+
+            <!--PHẦN MÃ SẢN PHẨM-->
+            <a (click)="FromHomeToProductDetailPage()"> {{MaSP}}</a>
+            <!---->
+        </div>
+    </ng-template>
+
+    <ng-template #template_ProductPage>
+
+        <ng-container *ngIf="
+        urlSegment_1 === 'All';
+        then template_AllAccessories_AllKm;
+        else template_NotAllAccessories_AllKm
+        "></ng-container>
+
+        <ng-template #template_AllAccessories_AllKm>
+            <div class="navigator">
+                <!--TRANG CHỦ-->
+                <a (click)="ToHome()">Trang chủ </a>
+                <!---->
+
+                <i class="fas fa-chevron-right"></i>
+
+                <!--All Accessories || Khuyến mãi-->
+                <a (click)="ToProductPage()"> {{urlSegment_2 === "Km" ? "Khuyến mãi" :
+                    "All Accessories & Apparel"}} </a>
+                <!---->
+
+                <i class="fas fa-chevron-right"></i>
+
+                <!--PHẦN MÃ SẢN PHẨM-->
+                <a (click)="FromProductPageToProductDetailPage()"> {{MaSP}}</a>
+                <!---->
+            </div>
+        </ng-template>
+
+        <ng-template #template_NotAllAccessories_AllKm>
+
+            <ng-container *ngIf="urlSegment_2 === 'All'; then template_NhAll; else template_NotNhAll"></ng-container>
+
+            <ng-template #template_NhAll>
+                <div class="navigator">
+                    <!--TRANG CHỦ-->
+                    <a (click)="ToHome()">Trang chủ </a>
+                    <!---->
+
+                    <i class="fas fa-chevron-right"></i>
+
+                    <!--PHẦN NHÃN HIỆU - All DANH MỤC-->
+                    <a (click)="ToProductPage()"> All {{ urlSegment_1 }} </a>
+                    <!---->
+
+                    <i class="fas fa-chevron-right"></i>
+
+                    <!--PHẦN MÃ SẢN PHẨM-->
+                    <a (click)="FromProductPageToProductDetailPage()"> {{MaSP}}</a>
+                    <!---->
+                </div>
+            </ng-template>
+
+            <ng-template #template_NotNhAll>
+                <div class="navigator">
+                    <!--TRANG CHỦ-->
+                    <a (click)="ToHome()">Trang chủ </a>
+                    <!---->
+
+                    <i class="fas fa-chevron-right"></i>
+
+                    <!--PHẦN NHÃN HIỆU-->
+                    <a (click)="ToProductPage(urlSegment_1,'All')"> {{ urlSegment_1 }} </a>
+                    <!---->
+
+                    <i class="fas fa-chevron-right"></i>
+
+                    <!--PHẦN DANH MỤC-->
+                    <a (click)="ToProductPage()"> {{ urlSegment_2 }} </a>
+                    <!---->
+
+                    <i class="fas fa-chevron-right"></i>
+
+                    <!--PHẦN MÃ SẢN PHẨM-->
+                    <a (click)="FromProductPageToProductDetailPage()"> {{MaSP}}</a>
+                    <!---->
+                </div>
+            </ng-template>
+
+        </ng-template>
+    </ng-template>
+</ng-template>

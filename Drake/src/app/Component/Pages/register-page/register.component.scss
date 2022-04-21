@@ -1,0 +1,43 @@
+#title h1 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #000000;
+}
+
+#title p {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #222222;
+}
+
+input[type="checkbox"] {
+  margin: 0 0.313rem;
+}
+
+.here,
+.fancybox {
+  color: #e20c0c;
+  text-decoration: none;
+}
+
+.here:hover,
+.fancybox:hover {
+  color: #990808;
+  text-decoration: none;
+}
+
+.pull-right {
+  text-align: right;
+}
+.pull-right button {
+  width: 10%;
+  padding: 0.625rem;
+  background-color: #f8c052;
+  border: none;
+  font-size: 1rem;
+  color: black;
+}
+.pull-right button:hover {
+  background-color: #555555;
+  color: white;
+}

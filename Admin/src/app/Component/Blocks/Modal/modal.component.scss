@@ -1,0 +1,61 @@
+.modal .modal-content .modal-header {
+  background-color: rgba(44, 40, 40, 0.8);
+  border: none;
+}
+.modal .modal-content .modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(44, 40, 40, 0.8);
+}
+.modal .modal-content .modal-body .modal-icon i {
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+}
+.modal .modal-content .modal-body .modal-text p {
+  margin-bottom: 1rem;
+  color: #ffffff;
+  font-size: 1.1rem;
+}
+.modal .modal-content .modal-body .success-icon {
+  color: #00bfa5;
+}
+.modal .modal-content .modal-body .danger-icon {
+  color: red;
+}
+.modal .modal-content .modal-body .warning-icon {
+  color: #ffff99;
+}
+.modal .modal-content .modal-body .modal-button-group {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.25rem;
+}
+.modal .modal-content .modal-body .modal-button-group button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.2s ease-in;
+}
+.modal .modal-content .modal-body .modal-button-group button + button {
+  margin-left: 1rem;
+}
+.modal .modal-content .modal-body .modal-button-group .modal-yes-button {
+  background-color: #3fb6ff;
+}
+.modal .modal-content .modal-body .modal-button-group .modal-yes-button:hover {
+  background-color: #1b90d9;
+}
+.modal .modal-content .modal-body .modal-button-group .modal-no-button {
+  background-color: #ff4858;
+}
+.modal .modal-content .modal-body .modal-button-group .modal-no-button:hover {
+  background-color: #d61c2d;
+}

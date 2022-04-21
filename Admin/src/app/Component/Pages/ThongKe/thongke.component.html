@@ -1,0 +1,146 @@
+<section class="content pt-3 mt-50">
+  <div class="container-fluid">
+    <form action="">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-10 offset-md-2">
+          <div class="row">
+            <div class="col-md-3 col-sm-4">
+              <div class="form-group">
+                <p style="text-align:right" class="text-muted mt-2 ml-5">Thống kê doanh thu theo năm</p>
+              </div>
+            </div>
+            <div class="col-md-7 col-sm-8">
+              <div class="form-group">
+                <div class="input-group">
+                  <div class="">
+                    <select name="nam" [(ngModel)]="nam" class="select" style="width: 100%;">
+                      <option *ngFor="let item of DanhSach_Nam" value="{{item.Nam}}">{{item.Nam}}</option>
+                    </select>
+                  </div>
+                  <div class="input-group-append">
+                    <button (click)="onEnter()" type="submit" class="btn btn-default">
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </div>
+                  <div class="input-group-append">
+                    <button (click)="refresh()" type="submit" class="btn btn-default">
+                      <i class="fas fa-redo"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Thống kê hiện tại</h3>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <table id="ds-kh" class="table table-bordered table-striped text-center">
+              <thead>
+                <tr>
+                  <th>Số lượng đơn hàng tính đến hiện tại</th>
+                  <th>Số tiền giảm giá tính đến hiện tại</th>
+                  <th>Số tiền vận chuyển tính đến hiện tại</th>
+                  <th>Tổng doanh thu tính đến hiện tại</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let tk of DanhSach_TK">
+                  <td>{{tk.Soluongdonhang}}</td>
+                  <td>{{tk.Sotiengiamgia | numberWithDots}}đ</td>
+                  <td>{{tk.Sotienvanchuyen | numberWithDots}}đ</td>
+                  <td>{{tk.Doanhthu | numberWithDots}}đ</td>
+                </tr>
+              </tbody>
+            </table> 
+          </div>
+          <div class="card-body">
+            <table id="ds-kh" class="table table-bordered table-striped text-center">
+              <thead>
+                <tr>
+                  <th>Khách mua hàng thường ở độ tuổi</th>
+                  <th>Tổng số lượng hóa đơn</th>
+                  <th>Chiếm tỉ lệ</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let tk of DanhSach_TiLe">
+                  <td>{{tk.Tuoi}}</td>
+                  <td>{{tk.TongSoLuong}}</td>
+                  <td>{{tk.TiLe | number}}</td>
+                </tr>
+              </tbody>
+            </table> 
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+</section>
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Thống kê năm {{nam}}</h3>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <table id="ds-kh" class="table table-bordered table-striped text-center">
+              <thead>
+                <tr>
+                  <th>Tháng</th>
+                  <th>Số lượng đơn hàng</th>
+                  <th>Số tiền giảm giá</th>
+                  <th>Số tiền vận chuyển</th>
+                  <th>Tổng doanh thu</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let tk of DanhSach_TKTheoNam">
+                  <td>{{tk.Thang}}</td>
+                  <td>{{tk.Soluongdonhang}}</td>
+                  <td>{{tk.Sotiengiamgia | numberWithDots}}đ</td>
+                  <td>{{tk.Sotienvanchuyen |  numberWithDots}}đ</td>
+                  <td>{{tk.Doanhthu | numberWithDots}}đ</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr *ngFor="let tk of DanhSach_TKTongTheoNam">
+                  <td>Tổng cộng</td>
+                  <td>{{tk.Soluongdonhang | numberWithDots}}</td>
+                  <td>{{tk.Sotiengiamgia | numberWithDots}}đ</td>
+                  <td>{{tk.Sotienvanchuyen | numberWithDots}}đ</td>
+                  <td>{{tk.Doanhthu | numberWithDots}}đ</td>
+                </tr>
+              </tfoot>
+            </table> 
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+</section>

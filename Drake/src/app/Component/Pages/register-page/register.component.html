@@ -1,0 +1,156 @@
+<div style="width: 65%;margin: 0 auto 2.5rem auto">
+    <navigator></navigator>
+    <div id="title">
+        <h1>Đăng Ký Tài Khoản</h1>
+        <p>Nếu bạn đã đăng ký tài khoản, vui lòng đăng nhập
+            <a class="here" (click)="ToLoginPage()">Tại Đây.</a>
+        </p>
+        <p>
+            <b>Lưu ý: </b>Các mục không được bỏ trống & phải điền đầy đủ, chính xác.
+        </p>
+    </div>
+    <div id="myform">
+        <form #form='ngForm'>
+            <fieldset id="account">
+                <legend>Thông tin cá nhân</legend>
+                <div class="form-group">
+                    <label class="form-label">Họ:</label>
+                    <input type="text" name="Ho" class="form-control" placeholder="Họ:" ngModel #ho='ngModel'
+                        [class.is-invalid]="ho.invalid && ho.touched" [class.is-valid]='ho.valid' required>
+                    <div class="invalid-feedback">
+                        <p>Họ phải từ 1 đến 32 kí tự!</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Tên:</label>
+                    <input type="text" class="form-control" name="Ten" placeholder="Tên:" ngModel #ten='ngModel'
+                        [class.is-invalid]="ten.invalid && ten.touched" [class.is-valid]='ten.valid' required>
+                    <div class="invalid-feedback">
+                        <p>Tên phải từ 1 đến 32 kí tự!</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Giới tính:</label>
+                    <select class="form-select" name="GioiTinh" ngModel #gioitinh='ngModel'
+                        [class.is-invalid]="gioitinh.invalid && gioitinh.touched" [class.is-valid]='gioitinh.valid'
+                        required>
+                        <option value="">Giới tính: </option>
+                        <option value="0">Nam</option>
+                        <option value="1">Nữ</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        <p>Giới tính không hợp lệ!</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Ngày sinh:</label>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-datepicker-toggle matSuffix [for]="picker">
+                    </mat-datepicker-toggle>
+                    <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" class="form-control"
+                        name="NgaySinh" ngModel #ngaysinh='ngModel'
+                        [class.is-invalid]="ngaysinh.invalid && ngaysinh.touched" [class.is-valid]='ngaysinh.valid'
+                        required>
+                    <div class="invalid-feedback">
+                        <p>Ngày sinh không hợp lệ!</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Địa chỉ E-Mail:</label>
+                    <input type="email" class="form-control" name="Email" placeholder="Địa chỉ E-Mail:" ngModel
+                        #email='ngModel' [class.is-invalid]="email.invalid && email.touched"
+                        [class.is-valid]='email.valid' required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                    <div class="invalid-feedback">
+                        <p>Email không hợp lệ!</p>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Điện Thoại:</label>
+                    <input type="tel" class="form-control" name="Sdt" placeholder="Điện Thoại:" ngModel #sdt='ngModel'
+                        [class.is-invalid]="sdt.invalid && sdt.touched" [class.is-valid]='sdt.valid' required
+                        pattern="((09|03|07|08|05)+([0-9]{8})\b)">
+                    <div class="invalid-feedback">
+                        <p>Số điện thoại không hợp lệ!</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Địa chỉ:</label>
+                    <input type="text" class="form-control" name="DiaChiChinh" placeholder="Địa chỉ:" ngModel
+                        #diachichinh='ngModel' [class.is-invalid]="diachichinh.invalid && diachichinh.touched"
+                        [class.is-valid]='diachichinh.valid' required>
+                    <div class="invalid-feedback">
+                        <p>Địa chỉ không hợp lệ!</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Tỉnh / Thành:</label>
+                    <select class="form-select" name="TinhThanh" ngModel
+                        (change)="changeCity($any($event.target).options[$any($event.target).options.selectedIndex].text)"
+                        #tinhthanh='ngModel' [class.is-invalid]="tinhthanh.invalid && tinhthanh.touched"
+                        [class.is-valid]='tinhthanh.valid' required>
+                        <option *ngFor="let city of cities" value="{{city.name === 'Tỉnh / Thành'? '':city.name}}">
+                            {{city.name}}</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        <p>Tỉnh thành không hợp lệ!</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Quận / Huyện:</label>
+                    <select class="form-select" name="QuanHuyen" [ngModel]='districts[0]'
+                        [class.is-invalid]="tinhthanh.invalid && tinhthanh.touched" [class.is-valid]='tinhthanh.valid'
+                        required>
+                        <option *ngFor="let district of districts" value="{{district | singleToDoubleQuote}}">
+                            {{district}}</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        <p>Quận huyện không hợp lệ!</p>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset id="pass">
+                <legend>Mật khẩu</legend>
+                <div class="form-group">
+                    <label class="form-label">Mật Khẩu mới:</label>
+
+                    <input type="password" class="form-control" name="Password" autocomplete="on"
+                        placeholder="Mật Khẩu:" [(ngModel)]='Password' #password='ngModel'
+                        [class.is-invalid]="password.invalid && password.touched" [class.is-valid]='password.valid'
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+
+                    <div class="invalid-feedback">
+                        <p>Phải chứa ít nhất một số và một chữ cái viết hoa và viết thường và ít nhất 8 ký tự trở lên
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Nhập lại Mật Khẩu:</label>
+
+                    <input type="password" class="form-control" name="confirmpassword" autocomplete="on"
+                        placeholder="Nhập lại Mật Khẩu:" [(ngModel)]='ConfirmPassword' #confirmpassword='ngModel'
+                        [class.is-invalid]="confirmpassword.invalid && confirmpassword.touched  || ConfirmPassword !== Password"
+                        [class.is-valid]='confirmpassword.valid && ConfirmPassword === Password' required>
+
+                    <div class="invalid-feedback">
+                        <p>Mật khẩu không khớp.
+                        </p>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+        <div class="pull-right">Tôi đã đọc &amp; đồng ý với <a class="fancybox"><b>Quy định và hình thức
+                    thanh toán</b></a>
+            <input type="checkbox" id="register-page-checkbox" ngModel #iAgreed='ngModel'>&nbsp;
+            <button class="btn btn-primary"
+                [attr.disabled]="form.invalid || ConfirmPassword !== Password  || !iAgreed.viewModel?'true':null"
+                (click)="registerUser(form)">Tiếp tục</button>
+        </div>
+    </div>
+    <modal [id]="'register-page-modal1'" [Type]="'success'" [Content]="'Bạn đã đăng kí tài khoản thành công.'"
+        (ModalClosed)="Modal1Closed(form.value.Email,form.value.Password)"></modal>
+    <modal [id]="'register-page-modal2'" [Type]="'danger'"
+        [Content]="'Ôi không! Đã xảy lỗi.\nNguyên nhân: Email đã được đăng kí.'"></modal>
+</div>

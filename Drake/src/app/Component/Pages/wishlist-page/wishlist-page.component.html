@@ -1,0 +1,55 @@
+<div style="width: 65%;margin: 0 auto 2.5rem auto">
+    <navigator></navigator>
+    <h1 class='title'>Wish List</h1>
+    <div class="mytable">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td class="column-1 text-center">Hình ảnh</td>
+                    <td class="column-2 text-left">Tên sản phẩm</td>
+                    <td class="column-3 text-left">Dòng sản phẩm</td>
+                    <td class="column-4 text-left">Hàng hóa</td>
+                    <td class="column-5 text-right">Đơn Giá</td>
+                    <td class="column-6 text-right">Thao tác</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let WishListItem of WishListItems;let i = index">
+                    <td class="column-1 text-center ">
+                        <img src="{{WishListItem.Hinh}}" class="img-fluid"
+                            (click)="FromHomeToProductDetailPage(WishListItem.MaSP)">
+                    </td>
+                    <td class="column-2 text-left">
+                        <span class="mytable-link"
+                            (click)="FromHomeToProductDetailPage(WishListItem.MaSP)">{{WishListItem.Ten}}</span>
+                    </td>
+                    <td class="column-3 text-left">{{WishListItem.DongSanPham}}</td>
+                    <td class="column-4 text-left">{{WishListItem.TinhTrang }}</td>
+                    <td class="column-5 text-right">{{WishListItem.Gia*(1-WishListItem.Km) | numberWithDots}}đ</td>
+                    <td class="column-6 text-right">
+                        <div class="input-group btn-block w-100">
+                            <button class="btn btn-primary" (click)="FromHomeToProductDetailPage(WishListItem.MaSP)">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                            <button class="btn btn-danger" (click)="AskForDeleteFromWishlist(WishListItem.MaSP)">
+                                <i class="fa fa-times-circle"></i>
+                            </button>
+                        </div>
+                        <modal [id]="'wishlist-page-modal'+WishListItem.MaSP" [Type]="'yesno'"
+                            [Content]="'Bạn có muốn xóa sản phẩm khỏi danh sách yêu thích ?'"
+                            (ModalClosed)="DeleteFromWishlistkModalClosed($event,i,WishListItem.MaSP)">
+                        </modal>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="button-container">
+        <button class="btn btn-default" (click)="ToProfilePage()">Trở về</button>
+        <button class="btn btn-primary" (click)="ToHome()">Tiếp tục mua hàng</button>
+    </div>
+
+    <modal id="wishlist-page-modal1" [Type]="'danger'" [Content]="'Xóa sản phẩm thất bại.'"></modal>
+</div>

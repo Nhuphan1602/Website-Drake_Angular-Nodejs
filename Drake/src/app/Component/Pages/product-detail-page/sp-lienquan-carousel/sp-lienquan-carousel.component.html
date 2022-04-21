@@ -1,0 +1,93 @@
+<div id="sp-lquan" *ngIf="RelatedProducts.length >= 5">
+    <h3 class="title text-center"><span>Sản phẩm liên quan</span></h3>
+    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+        <div ngxSlickItem *ngFor="let product of RelatedProducts; let i = index" class="slide">
+            <div class="product-cards text-center">
+                <!-- Card-->
+                <div class="card" style="font-size: 0.87rem;">
+                    <!--Tất cả font-size sau đều là phần trăm của thẻ card-->
+
+                    <div class="card-body">
+
+                        <div class="img-container">
+
+                            <img src="{{ product.c1_h1 }}" alt="" class="img-fluid"
+                                (click)="FromHomeToProductDetailPage(product.MaSP)" />
+
+                            <div class="box-label" (click)="FromHomeToProductDetailPage(product.MaSP)">
+                                <div class="icon-container">
+                                    <ng-container
+                                        *ngIf=" product.TrangThai === 'a-new'; then template_a_new; else template_b_restock">
+                                    </ng-container>
+
+                                    <ng-template #template_a_new>
+                                        <img class="img-fluid" src="assets/trangthai/ICON hot item5aa.png" alt="" />
+                                    </ng-template>
+
+                                    <ng-template #template_b_restock>
+                                        <img *ngIf="product.TrangThai === 'b-restock'" class="img-fluid"
+                                            src="assets/trangthai/ICON restock4aaa.png" alt="" />
+                                    </ng-template>
+
+                                </div>
+
+                                <div *ngIf="product.Km > 0" class="label-psale">
+                                    <span>{{ product.Km * -100 }}%</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="caption">
+
+                            <div class=" ten" style=" min-height: 2.81rem; max-height: 2.81rem;"
+                                (click)="FromHomeToProductDetailPage(product.MaSP)">
+                                <a>{{product.Ten | titlecase}}</a>
+                            </div>
+
+                            <div class="sku">
+                                # {{ product.MaSP }}
+                            </div>
+
+                            <!--Giá-->
+                            <div class="price" style=" min-height: 2.3rem; max-height: 2.3rem;">
+                                <ng-container *ngIf="product.Km > 0; then template_Km; else template_0"></ng-container>
+                                <ng-template #template_Km>
+
+
+                                    <span>Sale Price: </span>
+
+                                    <span class="price-pimary"
+                                        style="font-size: 100% !important; color: red !important">
+                                        <b>{{ product.Gia * (1 - product.Km) | numberWithDots }}đ</b>
+                                    </span>
+
+                                    <br />
+
+                                    <span>Drake Price: </span>
+
+                                    <span class="price-pimary"
+                                        style="font-size:90% !important; text-decoration: line-through !important">
+                                        <b>{{ product.Gia | numberWithDots }}đ</b>
+                                    </span>
+
+
+                                </ng-template>
+                                <ng-template #template_0>
+
+                                    <span>Drake Price: </span>
+
+                                    <span class="price-pimary" style="font-size: 100% !important"><b>{{ product.Gia |
+                                            numberWithDots
+                                            }}đ</b></span>
+
+
+                                </ng-template>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ngx-slick-carousel>
+</div>

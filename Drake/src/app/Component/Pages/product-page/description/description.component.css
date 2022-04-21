@@ -1,0 +1,85 @@
+.center {
+  display: block;
+  margin: 0.5rem auto;
+}
+.heading1 {
+  font-family: Roboto, sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  color: #666;
+  margin: 0.5rem 0 !important;
+}
+.heading2 {
+  font-family: Roboto, sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: justify;
+  color: #666;
+  margin: 0.5rem 0 !important;
+}
+.body {
+  font-family: Roboto, sans-serif;
+  font-size: 1rem;
+  text-align: justify;
+  color: #666;
+  margin: 0.5rem 0 !important;
+}
+.description {
+  font-family: Roboto, sans-serif;
+  font-size: 1rem;
+  font-style: italic;
+  text-align: center;
+  color: #666;
+  margin: 0.25rem 0 1rem !important;
+}
+ul li .body {
+  margin: 0.25rem 0 !important;
+}
+
+.hidden {
+  display: none;
+}
+.h-300 {
+  height: 300px;
+}
+.h-auto {
+  height: auto;
+}
+.content {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease-in;
+}
+.content .content-wrap:before {
+  content: "";
+  background-image: linear-gradient(
+    to top,
+    rgba(239, 239, 239, 255),
+    rgba(239, 239, 239, 0)
+  );
+  position: absolute;
+  height: 50%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.content .content-wrap:after {
+  content: "";
+  display: block;
+  height: 9999px;
+}
+
+.wrap-unwrap-content-button {
+  background-image: linear-gradient(to right, #0981db, #57d1da);
+  padding: 0.5rem 1rem;
+  border-radius: 50%;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+.wrap-unwrap-content-button:hover {
+  background-image: linear-gradient(to right, #fe1246, #fe5b1c);
+}

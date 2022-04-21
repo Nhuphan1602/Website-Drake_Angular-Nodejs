@@ -1,0 +1,10 @@
+<div #Content class="content">
+    <div #ContentWrap>
+        <div #ContentBody class="content-body" [innerHTML]="HtmlContent"></div>
+    </div>
+</div>
+<div #ButtonContainer class="text-center mt-2 mb-2">
+    <button class="wrap-unwrap-content-button" (click)="WrapUnWrapContent()">
+        <i #WrapUnwrapContentButtonIcon class="fas fa-arrow-down"></i>
+    </button>
+</div>

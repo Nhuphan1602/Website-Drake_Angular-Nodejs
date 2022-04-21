@@ -1,0 +1,120 @@
+<div style="width: 65%;margin: 0 auto 2.5rem auto">
+    <navigator></navigator>
+    <h1 class="title">Thông tin Tài Khoản</h1>
+    <div id="myform">
+        <form #form='ngForm'>
+            <fieldset id="account">
+                <legend>Thông tin cá nhân</legend>
+                <div class="form-group">
+                    <label class="form-label">Họ:</label>
+                    <input type="text" name="Ho" class="form-control" placeholder="Họ:" [(ngModel)]='this.User.Ho'
+                        #ho='ngModel' [class.is-invalid]="ho.invalid && ho.touched" [class.is-valid]='ho.valid'
+                        required>
+                    <div class="invalid-feedback">
+                        <p>Họ phải từ 1 đến 32 kí tự!</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Tên:</label>
+                    <input type="text" class="form-control" name="Ten" placeholder="Tên:" [(ngModel)]='this.User.Ten'
+                        #ten='ngModel' [class.is-invalid]="ten.invalid && ten.touched" [class.is-valid]='ten.valid'
+                        required>
+                    <div class="invalid-feedback">
+                        <p>Tên phải từ 1 đến 32 kí tự!</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Giới tính:</label>
+                    <select class="form-select" name="GioiTinh" [(ngModel)]="this.User.GioiTinh" #gioitinh='ngModel'
+                        [class.is-invalid]="gioitinh.invalid && gioitinh.touched" [class.is-valid]='gioitinh.valid'
+                        required>
+                        <option value="">Giới tính: </option>
+                        <option value="0">Nam</option>
+                        <option value="1">Nữ</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        <p>Giới tính không hợp lệ!</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Ngày sinh:</label>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-datepicker-toggle matSuffix [for]="picker">
+                    </mat-datepicker-toggle>
+                    <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" class="form-control"
+                        name="NgaySinh" [(ngModel)]='this.User.NgaySinh' #ngaysinh='ngModel'
+                        [class.is-invalid]="ngaysinh.invalid && ngaysinh.touched" [class.is-valid]='ngaysinh.valid'
+                        required>
+                    <div class="invalid-feedback">
+                        <p>Ngày sinh không hợp lệ!</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Địa chỉ E-Mail:</label>
+                    <input type="email" class="form-control" name="Email" placeholder="Địa chỉ E-Mail:"
+                        [(ngModel)]='this.User.Email' #email='ngModel'
+                        [class.is-invalid]="email.invalid && email.touched" [class.is-valid]='email.valid' required
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                    <div class="invalid-feedback">
+                        <p>Email không hợp lệ!</p>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Điện Thoại:</label>
+                    <input type="tel" class="form-control" name="Sdt" placeholder="Điện Thoại:"
+                        [(ngModel)]='this.User.Sdt' #sdt='ngModel' [class.is-invalid]="sdt.invalid && sdt.touched"
+                        [class.is-valid]='sdt.valid' required pattern="((09|03|07|08|05)+([0-9]{8})\b)">
+                    <div class="invalid-feedback">
+                        <p>Số điện thoại không hợp lệ!</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Địa chỉ:</label>
+                    <input type="text" class="form-control" name="DiaChiChinh" placeholder="Địa chỉ:"
+                        [(ngModel)]=' this.User.DiaChiChinh' #diachichinh='ngModel'
+                        [class.is-invalid]="diachichinh.invalid && diachichinh.touched"
+                        [class.is-valid]='diachichinh.valid' required>
+                    <div class="invalid-feedback">
+                        <p>Địa chỉ không hợp lệ!</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Tỉnh / Thành:</label>
+                    <select class="form-select" name="TinhThanh" [(ngModel)]='this.User.TinhThanh'
+                        (change)="changeCity($any($event.target).options[$any($event.target).options.selectedIndex].text)"
+                        #tinhthanh='ngModel' [class.is-invalid]="tinhthanh.invalid && tinhthanh.touched"
+                        [class.is-valid]='tinhthanh.valid' required>
+                        <option *ngFor="let city of cities" value="{{city.name === 'Tỉnh / Thành'? '':city.name}}">
+                            {{city.name}}</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        <p>Tỉnh thành không hợp lệ!</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Quận / Huyện:</label>
+                    <select class="form-select" name="QuanHuyen" [(ngModel)]='this.User.QuanHuyen'
+                        [class.is-invalid]="tinhthanh.invalid && tinhthanh.touched" [class.is-valid]='tinhthanh.valid'
+                        required>
+                        <option *ngFor="let district of districts" value="{{district | singleToDoubleQuote}}">
+                            {{district}}</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        <p>Quận huyện không hợp lệ!</p>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div class="button-container">
+        <button class="btn btn-default" (click)="ToProfilePage()">Trở về</button>
+        <button class="btn btn-primary" [attr.disabled]="form.invalid?'true':null" (click)="updateUser(form)">Tiếp
+            tục</button>
+    </div>
+    <modal [id]="'account-page-modal1'" Type="success" [Content]="'Cập nhật thành công.'"
+        (ModalClosed)="Modal1Closed()"></modal>
+    <modal [id]="'account-page-modal2'" Type="danger" [Content]="'Cập nhật thất bại.'"></modal>
+</div>

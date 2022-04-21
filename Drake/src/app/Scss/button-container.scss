@@ -1,0 +1,30 @@
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}
+.button-container .btn {
+  padding: 0.625rem 1.25rem;
+  font-size: 1rem;
+  background-color: #fff;
+  transition: all 0.25s linear !important;
+}
+.button-container .btn-primary {
+  color: #fe6f5e;
+
+  border: 2px solid #fe6f5e;
+}
+.button-container .btn-primary:hover,
+.button-container .btn-primary:focus {
+  color: #fff;
+  background-color: #fe6f5e;
+}
+
+.button-container .btn-default {
+  color: #a83731;
+  border: 2px solid #a83731;
+}
+.button-container .btn-default:hover,
+.button-container .btn-default:focus {
+  color: #fff;
+  background-color: #a83731;
+}

@@ -1,0 +1,225 @@
+div.product-cards div.card {
+  width: 100%;
+  height: auto;
+  border: none !important;
+}
+div.product-cards div.card div.card-body {
+  width: 100%;
+  height: auto;
+  border: none !important;
+}
+div.product-cards div.card div.card-body div.caption {
+  width: 100%;
+  height: auto;
+}
+div.product-cards div.card div.card-body div.caption div.ten {
+  font-size: 100%;
+  line-height: 110%;
+  margin: 0;
+}
+div.product-cards div.card div.card-body div.caption div.ten a {
+  text-decoration: none;
+  color: #000;
+  transition: color 0.1s linear;
+}
+div.product-cards div.card div.card-body div.caption div.ten:hover a {
+  color: #f8c052;
+}
+div.product-cards div.card div.card-body div.caption div.sku {
+  font-size: 80%;
+  margin: 3% 0;
+}
+
+div.product-cards div.card div.card-body div.caption div.price span {
+  font-size: 80%;
+}
+//Thẻ trạng thái
+
+div.product-cards div.card div.card-body div.img-container {
+  cursor: pointer;
+  user-select: none;
+  width: 100%;
+  position: relative;
+}
+div.product-cards div.card div.card-body div.img-container div.box-label {
+  display: flex;
+  justify-content: flex-end;
+  width: 31%;
+  height: 15%;
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+}
+div.product-cards
+  div.card
+  div.card-body
+  div.img-container
+  div.box-label
+  div.icon-container,
+div.product-cards
+  div.card
+  div.card-body
+  div.img-container
+  div.box-label
+  div.label-psale {
+  width: 50%;
+  height: auto;
+}
+div.product-cards
+  div.card
+  div.card-body
+  div.img-container
+  div.box-label
+  div.label-psale {
+  border-radius: 50% !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #feb303;
+}
+div.product-cards
+  div.card
+  div.card-body
+  div.img-container
+  div.box-label
+  div.label-psale
+  span {
+  text-align: center;
+  color: #fff;
+  font-size: 90%;
+  font-weight: bold;
+}
+
+//Thẻ chức năng
+div.product-cards
+  div.card
+  div.card-body
+  div.img-container
+  div.shopcart-heart-icon {
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10%;
+  width: 25%;
+  height: 15%;
+  display: flex;
+  justify-content: flex-start;
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  transform: scaleY(0);
+  transform-origin: 0 0;
+  transition: transform 0.2s linear;
+}
+div.product-cards
+  div.card
+  div.card-body
+  div.img-container
+  div.shopcart-heart-icon
+  div.shopcart-icon,
+div.product-cards
+  div.card
+  div.card-body
+  div.img-container
+  div.shopcart-heart-icon
+  div.heart-icon {
+  font-size: 115%;
+  width: 50%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s linear;
+}
+div.product-cards
+  div.card
+  div.card-body
+  div.img-container
+  div.shopcart-heart-icon
+  div.shopcart-icon:hover,
+div.product-cards
+  div.card
+  div.card-body
+  div.img-container
+  div.shopcart-heart-icon
+  div.heart-icon:hover {
+  background-color: rgb(237, 233, 233);
+}
+div.product-cards
+  div.card
+  div.card-body
+  div.img-container
+  div.shopcart-heart-icon
+  div.shopcart-icon
+  i {
+  color: #15aade;
+}
+
+div.product-cards
+  div.card
+  div.card-body
+  div.img-container
+  div.shopcart-heart-icon
+  div.heart-icon
+  i {
+  color: #ffb7c5;
+}
+div.product-cards
+  div.card
+  div.card-body
+  div.img-container:hover
+  div.shopcart-heart-icon {
+  transform: scaleY(1);
+}
+
+.custom-pagination {
+  margin: 1rem 0;
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  box-shadow: 0 0.25rem 0.5rem 0 rgba(0, 0, 0, 0.2),
+    0 0.375rem 1.25rem 0 rgba(0, 0, 0, 0.19);
+  border-radius: 2rem;
+  user-select: none;
+}
+.custom-pagination .pagination-previous,
+.custom-pagination .pagination-next {
+  display: inline-block;
+  padding: 0.3rem 0;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.2s ease-in;
+  cursor: pointer;
+}
+.custom-pagination .page-number {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease-in;
+  cursor: pointer;
+}
+.custom-pagination .disabled {
+  pointer-events: none;
+}
+
+.custom-pagination .page-number + .page-number,
+.custom-pagination .pagination-next {
+  margin-left: 1rem;
+}
+.custom-pagination .pagination-previous {
+  margin-right: 1rem;
+}
+.page-number.current {
+  background-color: #333333;
+  color: white;
+}
+.custom-pagination .page-number:hover {
+  background-color: #333333;
+  color: white;
+}
+.custom-pagination .pagination-next:hover,
+.custom-pagination .pagination-previous:hover {
+  color: red;
+}

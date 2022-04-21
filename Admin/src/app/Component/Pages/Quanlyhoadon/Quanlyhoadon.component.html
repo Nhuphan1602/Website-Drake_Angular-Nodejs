@@ -1,0 +1,258 @@
+<section class="content pt-3 mt-50">
+  <div class="container-fluid">
+      <form action="">
+          <div class="row d-flex justify-content-center">
+              <div class="col-md-10 offset-md-2">
+                <div class="row">
+                  <div class="col-md-3 col-sm-4">
+                    <div class="form-group">
+                      <select (change)="onChangeSelect($event)" class="select" style="width: 100%;" placeholder="Tìm kiếm">
+                        <option value="" disabled selected>Tìm kiếm theo</option>
+                        <option *ngFor="let e of ot_timkiem" value="{{e.val}}">{{e.name}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-7 col-sm-8">
+                    <div class="form-group">
+                      <div class="input-group">
+                        <input #currentItem (keyup.enter)="onEnter(currentItem.value)" [(ngModel)]="timkiem" name="timkiem" type="search" class="form-control" placeholder="Type your keywords here">
+                        <div class="input-group-append">
+                          <button (click)="onEnter(currentItem.value)" type="submit" class="btn btn-default">
+                            <i class="fa fa-search"></i>
+                          </button>
+                        </div>
+                        <div class="input-group-append">
+                          <button (click)="refresh()" type="submit" class="btn btn-default">
+                            <i class="fas fa-redo"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+      </form>
+  </div>
+</section>
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Danh sách các hóa đơn</h3>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <table id="ds-kh" class="table table-bordered table-striped">
+              <thead>
+              <tr>
+                <th>Mã hóa đơn</th>
+                <th>Mã khách hàng</th>
+                <th>Mã giảm giá</th>
+                <th>Mã phương thức thanh toán</th>
+                <th>Mã phương thức vận chuyển</th>
+                <th>Trạng thái</th>
+                <th>Ngày mua</th>
+                <th>Ngày nhận hàng</th>
+                <th>Tổng tiền</th>
+                <th>Ghi chú</th>
+                <th class="text-center">Sửa/Xóa</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let hd of DanhSach_HD">
+                <td>{{hd.MaHD}}</td>
+                <td>{{hd.MaKH}}</td>
+                <td>{{hd.MaGiamGia}}</td>
+                <td>{{hd.MaPTTT}}</td>
+                <td>{{hd.MaPTVC}}</td>
+                <td>{{hd.TrangThai}}</td>  
+                <td>{{hd.Ngaymua | hienDate}}</td>
+                <td>{{hd.Ngaynhanhang | hienDate}}</td>
+                <td>{{hd.TongTien | numberWithDots}}đ</td>
+                <td>{{hd.GhiChu}}</td>
+                <td class="text-center">
+                  <div class="btn-group" style="margin-top: 5px;">
+                    <button (click)="getHDCT(hd.TenKH, hd.TenMGG, hd.TenPTTT, hd.TenPTVC)" type="button" data-toggle="modal" data-target="#xem-hd-modal" class="btn btn-warning"><i class="fas fa-eye"></i></button>
+                    <button (click)="getHD(hd)" type="button" data-toggle="modal" data-target="#sua-hd-modal" class="btn btn-info"><i class="fas fa-edit"></i></button>
+                    <button (click)="getHD(hd)" type="button" data-toggle="modal" data-target="#xoa-hd-modal" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                  </div>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+  
+</section>
+<!-- /.content -->
+<div id="xoa-hd-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="Xoa-kh-ModalLabel">Xóa hóa đơn</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Bạn có muốn xóa hóa đơn này hay không ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+        <button (click)="deleteHD()" type="button" class="btn btn-primary">Xóa</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="sua-hd-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="kh-ModalLabel">Chỉnh sửa hóa đơn</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="modal-body">
+        <form>
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <label class="col-form-label">Mã hóa đơn:</label>
+                <input disabled="disable" name="mahd" [(ngModel)]="mahd" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label class="col-form-label">Mã khách hàng:</label>
+                <select [(ngModel)]="makh" name="makh" class="select" style="width: 100%;" >
+                  <option *ngFor="let item of Option_MaKH" value="{{item.MaKH}}">{{item.MaKH}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label class="col-form-label">Mã giảm giá:</label>
+                <select name="magiamgia" [(ngModel)]="magiamgia" class="select" style="width: 100%;">
+                  <option *ngFor="let item of Option_MaGiamGia" value="{{item.MaGiamGia}}">{{item.MaGiamGia}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label class="col-form-label">Mã phương thức thanh toán:</label>
+                <div class="form-group">
+                  <select name="mapttt" [(ngModel)]="mapttt" class="select" style="width: 100%;">
+                    <option *ngFor="let item of Option_MaPTTT" value="{{item.MaPTTT}}">{{item.MaPTTT}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label class="col-form-label">Mã phương thức vận chuyển:</label>
+                <div class="form-group">
+                  <select name="maptvc" [(ngModel)]="maptvc" class="select" style="width: 100%;">
+                    <option *ngFor="let item of Option_MaPTVC" value="{{item.MaPTVC}}">{{item.MaPTVC}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label class="col-form-label">Trạng thái:</label>
+                <div class="form-group">
+                  <select value="{{trangthai}}" [(ngModel)]="trangthai" name="trangthai" class="select" style="width: 100%;">
+                    <option *ngFor="let item of itemtt" value="{{item.name}}">{{item.name}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label class="col-form-label">Ngày mua:</label>
+                <mat-datepicker #picker1></mat-datepicker>
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <input matInput [matDatepicker]="picker1" class="form-control" id="dtp-kh-ngmua" name="ngaymua"
+                  [(ngModel)]='ngaymua'>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label class="col-form-label">Ngày nhận hàng:</label>
+                <mat-datepicker #picker2></mat-datepicker>
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <input matInput [matDatepicker]="picker2" class="form-control" id="dtp-kh-ngnhanhang" name="ngaynhanhang"
+                  [(ngModel)]='ngaynhanhang'>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label class="col-form-label">Tổng tiền:</label>
+                <input [(ngModel)]="tongtien" name="tongtien" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label class="col-form-label">Ghi chú:</label>
+                <input [(ngModel)]="ghichu" name="ghichu" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+        <button (click)="saveHD()" type="button" class="btn btn-primary">Lưu</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="xem-hd-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="kh-ModalLabel">Xem thông tin chi tiết</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <table id="ds-cthd" class="table table-bordered table-striped">
+        <thead>
+          <tr class="text-center">
+            <th>Khách hàng</th> 
+            <th>Mã giảm giá</th>
+            <th>Phương thức thanh toán</th>
+            <th>Phương thức vận chuyển</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-center">
+            <td>{{tenkh}}</td>
+            <td>{{tenmgg}}</td>
+            <td>{{tenpttt}}</td>
+            <td>{{tenptvc}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+      </div>
+    </div>
+  </div>
+</div>

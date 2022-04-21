@@ -1,0 +1,147 @@
+<div class="detail1-section row justify-content-center mb-2">
+  <div class="box-detail-content-1 col-sm-4">
+    <ngx-slick-carousel class="carousel_01_1S" #slickModal="slick-carousel" [config]="carousel_01_config_1S">
+      <div ngxSlickItem *ngFor="let slide of carousel_01_slides" class="slide">
+        <div class="large-image">
+          <img class="product-image-zoom main-image img-fluid" src="{{ slide }}" (click)="OpenImgModal(slide)" />
+        </div>
+      </div>
+    </ngx-slick-carousel>
+
+    <div class="video-360">
+      <div class="image360-box"><a class="image360"> </a> IMAGES</div>
+    </div>
+
+    <ngx-slick-carousel class="carousel_01_3S" #slickModal="slick-carousel" [config]="carousel_01_config_3S">
+      <div ngxSlickItem *ngFor="let slide of carousel_01_slides" class="slide" style="
+          background-image: linear-gradient(to right, red, yellow);
+          border-radius: 0.25rem;
+        ">
+        <img class="img-fluid" src="{{ slide }}" (click)="OpenImgModal(slide)" />
+      </div>
+    </ngx-slick-carousel>
+  </div>
+  <div class="box-detail-content-2 col-sm-8">
+    <div class="title-product d-inline-block">
+      <h1 class="d-inline">{{ ProductDetail.Ten }}</h1>
+      <div class="sku-title d-inline" style="font-size: 23px; font-weight: 600 !important">
+        - {{ ProductDetail.MaSP }}
+      </div>
+    </div>
+    <div class="box-review pt-1 pb-2" style="color: #666666 !important">
+      <div class="ratings d-inline">
+        <div class="rating-box d-inline" style="color: #dddddd !important">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+        </div>
+      </div>
+      <p class="d-inline">
+        <span style="border-right: 1px solid black; margin: 0px 5px">
+          0 Đánh giá
+        </span>
+        Đưa ra đánh giá của bạn
+      </p>
+    </div>
+    <div class="row">
+      <div class="desc-price col-sm-2 d-flex align-items-center pr-2 pl-2" style="border-right: 1px solid #dedede;">
+        <div class="product-desc" style="color: #666666 !important">
+          <div class="sku"><span>SKU: </span> {{ ProductDetail.MaSP }}</div>
+          <div class="metarial">
+            <span>Chất liệu: </span> {{ ProductDetail.ChatLieu }}
+          </div>
+          <div class="color">
+            <span>Màu sắc: </span> {{ ProductDetail.MauSac }}
+          </div>
+        </div>
+      </div>
+      <div class="price-stock col-sm-10 d-inline">
+        <div class="product_page_price price">
+          <div class="rprice">
+            <span class="tprice">Drake Price: </span>
+            <span class="price-new">{{ ProductDetail.Gia! | numberWithDots }} đ
+            </span>
+          </div>
+        </div>
+        <div class="promo-text">
+          <b>
+            <p style="font-size: 11px">
+              {{ ProductDetail.CheDoVanChuyen }}
+            </p>
+          </b>
+        </div>
+      </div>
+      <div class="short-description pt-2">
+        {{ ProductDetail.GioiThieu }}
+      </div>
+      <hr style="width: 96%; margin-left: 12px" />
+      <div id="product">
+        <div class="option-box">
+          <div class="options">
+            <div class="option-item">
+              <select id="input-option330" class="form-select mt-2" style="
+                  font-weight: 700;
+                  width: 222px;
+                  font-size: 12px;
+                  height: 41px;
+                " #size>
+                <option value="-999" selected disabled>VUI LÒNG CHỌN SIZE</option>
+                <option *ngFor="let Size of ProductSize; let i = index" value="{{i}}">{{Size.GiaTriSize}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <a class="huongdanchonsize d-block mt-3 mb-3"><i class="fa fa-question-circle"></i> Hướng dẫn chọn
+          size</a>
+        <div id="soluong" class="d-inline">
+          <label for="soluong"><b>- Số lượng</b></label>
+          <input #soluong type="number" name="soluong" value="1" min="1" max="1000" />
+          <button type="button" title="Đặt hàng" data-loading-text="Đang Xử lý..." id="button-cart"
+            class="btn btn-mega btn-lg ml-4" (click)="InsertIntoShopCart(size.value,soluong)">
+            Đặt hàng
+          </button>
+          <button type="button" class="btn btn-lg wishlist btn-heart" title="Thêm Yêu thích"
+            (click)="InsertIntoWishlist()">
+            <i class="far fa-heart"></i>
+          </button>
+        </div>
+        <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="carousel_02_config">
+          <div ngxSlickItem *ngFor="let slide of carousel_02_slides" class="slide">
+            <img class="img-fluid" src="{{ slide }}" (click)="OpenImgModal(slide)" />
+          </div>
+        </ngx-slick-carousel>
+      </div>
+    </div>
+  </div>
+
+
+  <div #Modal class="modal fade" id="myModal-product-detail-page-ModalImg" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" role="document">
+        <div class="modal-header">
+          <button #ModalCloseButton class=" btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-img">
+            <img #ModalImg class="img-fluid" />
+          </div>
+          <div #ModalCaption class="modal-caption text-center pb-5"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button #ModalOpenButton class="btn btn-success" data-bs-toggle="modal"
+    [attr.data-bs-target]="'#myModal-product-detail-page-ModalImg'" hidden>
+  </button>
+  <modal [id]="'product-detail-page-modal1'" [Type]="'success'" [Content]="'Thêm sản phẩm vào giỏ thành công.'"></modal>
+  <modal [id]="'product-detail-page-modal2'" [Type]="'danger'" [Content]="'Bạn đã thêm sản phẩm này vào giỏ.'"></modal>
+  <modal [id]="'product-detail-page-modal3'" [Type]="'warning'" [Content]="'Bạn chưa chọn size cho sản phẩm.'"></modal>
+  <modal [id]="'product-detail-page-modal4'" [Type]="'warning'"
+    [Content]="'Sản phẩm hiện không cung cấp đủ số lượng mua.'"></modal>
+  <modal [id]="'product-detail-page-modal5'" [Type]="'success'" [Content]="'Yêu thích sản phẩm thành công.'"></modal>
+  <modal [id]="'product-detail-page-modal6'" [Type]="'danger'" [Content]="'Bạn đã yêu thích sản phẩm này rồi.'">
+  </modal>
+</div>
